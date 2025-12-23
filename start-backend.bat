@@ -1,5 +1,21 @@
 @echo off
+chcp 65001 >nul
 cd /d "%~dp0"
+
+REM Python 설치 확인
+python --version >nul 2>&1
+if errorlevel 1 (
+    echo Python이 설치되어 있지 않습니다.
+    echo.
+    echo 설치 방법:
+    echo   1. https://www.python.org/downloads/ 에서 다운로드
+    echo   2. 또는 winget install Python.Python.3.12
+    echo.
+    echo 설치 시 "Add Python to PATH" 옵션을 반드시 체크하세요!
+    echo.
+    pause
+    exit /b 1
+)
 
 REM venv가 없으면 생성하고 의존성 설치
 if not exist "venv" (
