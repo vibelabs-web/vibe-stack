@@ -1,0 +1,20 @@
+.card {
+    background-color: var(--surface-color);
+    border-radius: 1.5rem;
+    /* ~24px, keeping it round but cleaner */
+    padding: 3rem;
+    /* More spacing */
+    box-shadow: 0 20px 40px -4px rgba(0, 0, 0, 0.05);
+    /* Very soft diffuse shadow */
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    border: none;
+    /* Removed the "box frame" border */
+    max-width: 480px;
+    /* Limit width for better proportion */
+    width: 100%;
+}
+
+.hoverable:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+}

@@ -1,0 +1,29 @@
+# Discovery Task: Vibe Coding Project Discovery
+
+- [x] Idea Discovery (18 Questions)
+    - [x] Q1: Project Name (바이브랩스 커뮤니티)
+    - [x] Q2: One-sentence Summary (코딩 초보자동반 성장 커뮤니티)
+    - [x] Q3: Motivation (바이브 코딩의 효율성 검증)
+    - [x] Q4: Problem Solving (초보자의 심리적 문턱 낮추기)
+    - [x] Q5: User Persona (비전공자 독학 초보 김코딩)
+    - [x] Q6: Usage Context (오늘의 배움 설명 및 복습)
+    - [x] Q7: Key Features (TIL, 응원댓글, 랭킹)
+    - [x] Q8: MVP Feature (TIL 게시판 중심 단계적 확장)
+    - [x] Q9: Negative References (복잡한 UI 지양)
+    - [x] Q10: Look & Feel (플레이풀, 밝은 색감)
+    - [x] Q11: Usage Environment (반응형 웹)
+    - [x] Q12: External Integrations (없음, 심플하게)
+    - [x] Q13: Data Storage (클라우드/ngrok 활용)
+    - [x] Q14: Ultimate Goal (정서적 유대 및 동반 성장)
+    - [x] Q15: Tone of Voice (다정다감한 친구, 해요체)
+    - [x] Q16: Success Metrics (일일 글 작성자 10명)
+    - [x] Q17: Revenue Model (완전 무료)
+    - [x] Q18: Idea Validation (MVP를 통한 직접 검증)
+- [x] Document Generation
+    - [x] PRD (Product Requirements Document)
+    - [x] TRD (Technical Requirements Document)
+    - [x] User Flow
+    - [x] Database Design
+    - [x] Design System
+    - [x] TASKS (AI Prompt Design)
+    - [x] Coding Convention & AI Collaboration Guide

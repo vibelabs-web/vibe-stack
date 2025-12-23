@@ -1,0 +1,25 @@
+{
+  "name": "create-vibe-app",
+  "version": "1.0.0",
+  "description": "CLI to bootstrap Vibe Community App",
+  "main": "index.js",
+  "bin": {
+    "create-vibe-app": "./index.js"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "cli",
+    "generator",
+    "vibe"
+  ],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "chalk": "^4.1.2",
+    "prompts": "^2.4.2",
+    "ora": "^5.4.1",
+    "degit": "^2.8.4"
+  }
+}
