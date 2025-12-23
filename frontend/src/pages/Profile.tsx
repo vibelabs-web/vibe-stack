@@ -46,7 +46,7 @@ export const Profile: React.FC = () => {
 
             // Ensure absolute URL if backend returns relative path
             if (fullUrl.startsWith('/uploads')) {
-                fullUrl = `http://localhost:8005${fullUrl}`;
+                fullUrl = `http://localhost:8000${fullUrl}`;
             }
 
             setAvatarUrl(fullUrl);

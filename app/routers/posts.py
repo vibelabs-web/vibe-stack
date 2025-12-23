@@ -8,7 +8,7 @@ from app.utils.deps import get_current_user
 from app.models.user import User
 
 router = APIRouter(
-    prefix="/api/v1/posts",
+    prefix="/api/posts",
     tags=["posts"]
 )
 

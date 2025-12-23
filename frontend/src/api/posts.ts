@@ -1,20 +1,18 @@
 import axios from 'axios';
 import { useAuthStore } from '../store/authStore';
 
-const API_URL = 'http://localhost:8005/api/v1/posts'; // Adjust based on actual backend prefix
+const API_URL = 'http://localhost:8000/api/posts';
 
 // Helper to get token (if not using cookies/interceptors)
 const getAuthHeader = () => {
-    // This depends on how auth is handled. If using httpOnly cookies, no header needed.
-    // If using JWT in localStorage/Zustand:
-    const token = localStorage.getItem('token'); // Or from store
+    const token = localStorage.getItem('token');
     return token ? { Authorization: `Bearer ${token}` } : {};
 };
 
-// Create axios instance if needed, or just use axios directly
+// Create axios instance
 const api = axios.create({
-    baseURL: 'http://localhost:8005/api/v1',
-    withCredentials: true, // If using cookies
+    baseURL: 'http://localhost:8000/api',
+    withCredentials: true,
 });
 
 export interface Post {

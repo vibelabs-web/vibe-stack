@@ -28,7 +28,7 @@ export const WritePost: React.FC = () => {
             const data = await uploadFile(file);
             let fullUrl = data.url;
             if (data.url.startsWith('/uploads')) {
-                fullUrl = `http://localhost:8005${data.url}`;
+                fullUrl = `http://localhost:8000${data.url}`;
             }
             setImageUrl(fullUrl);
             setToast({ message: 'Image uploaded successfully.', type: 'success' });
