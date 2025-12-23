@@ -155,3 +155,21 @@ pipx run cookiecutter https://github.com/your-id/vibe-template
 npx create-vibe-app my-new-project
 ```
 이 방식이 가장 **프로페셔널**해 보입니다. 프론트엔드/풀스택 프로젝트라면 이 방식을 강력 추천합니다! 👍
+
+---
+
+## 5. npm 계정 만들기가 귀찮다면? (`npx degit` 사용)
+
+npm 회원가입이나 배포 과정 없이, **지금 당장** 남들이 내 템플릿을 쓰게 하고 싶다면 이 방법이 최고입니다.
+`degit`은 깃허브 저장소를 다운로드해 주는 표준 도구입니다.
+
+### 사용자는 이렇게 씁니다
+```bash
+# npx degit 깃허브주소 폴더명
+npx degit vibelabs-web/vibe-stack my-new-project
+```
+
+이 명령어 한 줄이면 누구든 님의 프로젝트를 다운로드해서 바로 시작할 수 있습니다.
+- **장점:** 배포 불필요, 로그인 불필요, 즉시 사용 가능
+- **단점:** `create-vibe-stack`이라는 멋진 이름 대신 `degit`을 써야 함
+

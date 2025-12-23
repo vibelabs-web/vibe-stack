@@ -1,10 +1,10 @@
 {
-  "name": "create-vibe-app",
+  "name": "create-vibe-stack",
   "version": "1.0.0",
   "description": "CLI to bootstrap Vibe Community App",
   "main": "index.js",
   "bin": {
-    "create-vibe-app": "./index.js"
+    "create-vibe-stack": "./index.js"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"

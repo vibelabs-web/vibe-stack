@@ -132,7 +132,7 @@
 **컨텍스트:** 사용자 프로필 조회 및 수정 기능을 구현합니다.
 
 ### Backend API
-- [ ] 사용자 라우터 (`app/routers/users.py`)
+- [x] 사용자 라우터 (`app/routers/users.py`)
   - `GET /api/users/me` - 내 정보 조회
   - `PUT /api/users/me` - 내 정보 수정
   - `PUT /api/users/me/password` - 비밀번호 변경
@@ -140,11 +140,11 @@
   - `GET /api/users/{user_id}/posts` - 사용자 게시글 목록
 
 ### Frontend
-- [ ] 프로필 페이지 (`src/pages/Profile.tsx`)
+- [x] 프로필 페이지 (`src/pages/Profile.tsx`)
   - 프로필 카드 (닉네임, 자기소개, 프로필 이미지)
   - 통계 (작성 글 수, 받은 좋아요 수)
   - 탭: 내가 쓴 글 / 좋아요한 글
-- [ ] 프로필 수정 모달
+- [x] 프로필 수정 모달
 - [ ] 비밀번호 변경 모달
 
 **인수 조건:**

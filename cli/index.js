@@ -7,7 +7,7 @@ const chalk = require('chalk');
 const ora = require('ora');
 const degit = require('degit');
 
-const TEMPLATE_REPO = 'futurewave/vibe-community'; // 나중에 실제 깃헙 주소로 변경 필요
+const TEMPLATE_REPO = 'vibelabs-web/vibe-stack';
 
 async function init() {
     console.log(chalk.bold.hex('#FF6B00')('\n🍊 Welcome to Vibe Community CLI!\n'));
