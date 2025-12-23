@@ -1,0 +1,175 @@
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 2rem 1rem;
+}
+
+.card {
+    background-color: var(--bg-surface-light);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-soft);
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+body.dark .card {
+    background-color: var(--bg-surface-dark);
+}
+
+.title {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--text-main-light);
+    margin-bottom: 0.5rem;
+}
+
+body.dark .title {
+    color: var(--text-main-dark);
+}
+
+.formGroup {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.label {
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: var(--text-main-light);
+}
+
+body.dark .label {
+    color: var(--text-main-dark);
+}
+
+.input,
+.textarea {
+    width: 100%;
+    padding: 0.75rem;
+    border-radius: var(--radius-md);
+    border: 1px solid var(--border-light);
+    background-color: var(--bg-light);
+    color: var(--text-main-light);
+    font-size: 1rem;
+    transition: all 0.2s;
+    box-sizing: border-box;
+}
+
+body.dark .input,
+body.dark .textarea {
+    border-color: var(--border-dark);
+    background-color: #1e1611;
+    color: var(--text-main-dark);
+}
+
+.input:focus,
+.textarea:focus {
+    outline: none;
+    border-color: var(--color-primary);
+    box-shadow: 0 0 0 3px rgba(255, 139, 61, 0.1);
+}
+
+.textarea {
+    min-height: 300px;
+    resize: vertical;
+    line-height: 1.6;
+}
+
+.fileUploadArea {
+    border: 2px dashed var(--border-light);
+    border-radius: var(--radius-md);
+    padding: 2rem;
+    text-align: center;
+    cursor: pointer;
+    transition: all 0.2s;
+    background-color: var(--bg-light);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: var(--text-muted-light);
+}
+
+body.dark .fileUploadArea {
+    border-color: var(--border-dark);
+    background-color: #1e1611;
+}
+
+.fileUploadArea:hover {
+    border-color: var(--color-primary);
+    background-color: rgba(255, 139, 61, 0.05);
+}
+
+.previewContainer {
+    margin-top: 1rem;
+    position: relative;
+    width: fit-content;
+}
+
+.previewImage {
+    max-width: 100%;
+    max-height: 300px;
+    border-radius: var(--radius-md);
+    box-shadow: var(--shadow-sm);
+}
+
+.removeImageBtn {
+    position: absolute;
+    top: -10px;
+    right: -10px;
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    background-color: var(--color-error);
+    color: white;
+    border: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    box-shadow: var(--shadow-sm);
+}
+
+.actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 1rem;
+    margin-top: 1rem;
+}
+
+.cancelBtn {
+    padding: 0.75rem 1.5rem;
+    border-radius: var(--radius-md);
+    background: transparent;
+    border: 1px solid var(--border-light);
+    color: var(--text-muted-light);
+    font-weight: 600;
+    cursor: pointer;
+}
+
+body.dark .cancelBtn {
+    border-color: var(--border-dark);
+}
+
+.submitBtn {
+    padding: 0.75rem 2rem;
+    border-radius: var(--radius-md);
+    background-color: var(--color-primary);
+    color: white;
+    border: none;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.submitBtn:hover {
+    background-color: var(--color-primary-dark);
+}
+
+.submitBtn:disabled {
+    opacity: 0.7;
+    cursor: not-allowed;
+}

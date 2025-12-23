@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Vibelabs Ranking Board</title>
+<!-- Google Fonts -->
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;900&amp;display=swap" rel="stylesheet"/>
+<!-- Material Symbols -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- Theme Configuration -->
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#ff8b3d",
+                        "background-light": "#f8f7f5",
+                        "background-dark": "#23170f",
+                        "surface-light": "#ffffff",
+                        "surface-dark": "#2d1e17",
+                        "text-main-light": "#1d130c",
+                        "text-main-dark": "#ede0d9",
+                        "text-sec-light": "#a16a45",
+                        "text-sec-dark": "#d6bba9",
+                    },
+                    fontFamily: {
+                        "display": ["Inter", "sans-serif"]
+                    },
+                    borderRadius: { "DEFAULT": "0.5rem", "lg": "1rem", "xl": "1.5rem", "full": "9999px" },
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark font-display min-h-screen flex flex-col transition-colors duration-200">
+<!-- Top Navigation -->
+<header class="sticky top-0 z-50 w-full bg-surface-light/90 dark:bg-surface-dark/90 backdrop-blur-md border-b border-[#f4ece6] dark:border-[#3e2b22]">
+<div class="max-w-[1280px] mx-auto px-4 sm:px-10 py-3 flex items-center justify-between">
+<!-- Logo -->
+<div class="flex items-center gap-4 text-text-main-light dark:text-text-main-dark">
+<div class="size-8 text-primary">
+<span class="material-symbols-outlined text-3xl">local_fire_department</span>
+</div>
+<h2 class="text-xl font-black tracking-tight">Vibelabs</h2>
+</div>
+<!-- Desktop Nav -->
+<div class="hidden md:flex flex-1 justify-end items-center gap-8">
+<div class="flex items-center gap-6">
+<a class="text-text-main-light dark:text-text-main-dark text-sm font-medium hover:text-primary transition-colors" href="#">Home</a>
+<a class="text-text-main-light dark:text-text-main-dark text-sm font-medium hover:text-primary transition-colors" href="#">TIL Feed</a>
+<a class="text-primary text-sm font-bold" href="#">Ranking</a>
+<a class="text-text-main-light dark:text-text-main-dark text-sm font-medium hover:text-primary transition-colors" href="#">Profile</a>
+</div>
+<button class="flex items-center justify-center rounded-xl h-10 px-5 bg-primary hover:bg-orange-500 text-white text-sm font-bold shadow-lg shadow-orange-500/20 transition-all active:scale-95">
+<span>Post TIL</span>
+</button>
+<div class="bg-center bg-no-repeat bg-cover rounded-full size-10 ring-2 ring-white dark:ring-surface-dark shadow-sm" data-alt="User profile avatar" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuD7fnTWZyNO45o2aKaGz1GFmZisstF4z7ttn8q7gLZN3qX_HDhX9WGApImNWnvMmk7HgFLw3Xm8acSx3bkdSpXf9eEvvh0KvmYUm6aKVhwjvmkwhwt75Caw6Oua54uhgk2II2lrA9t3JsHLVesDpH-mc9Yn3kjVlkcYNqCiIWEfyqEU76GC-ZYAfeqzxkGGnqkurvuq_SlldT6fC6FS0Bjsxs-tjFLT1LjItFmjOVTX-cqIuXMndzERyTBARmSp1vZTilPOTvrfLCU");'></div>
+</div>
+<!-- Mobile Menu Icon -->
+<div class="md:hidden text-text-main-light dark:text-text-main-dark">
+<span class="material-symbols-outlined">menu</span>
+</div>
+</div>
+</header>
+<main class="flex-1 w-full max-w-[960px] mx-auto px-4 sm:px-6 py-8 flex flex-col gap-8">
+<!-- Page Heading -->
+<div class="flex flex-col gap-2 text-center items-center animate-fade-in-up">
+<div class="flex items-center gap-2 px-3 py-1 rounded-full bg-orange-100 dark:bg-orange-900/30 text-primary text-xs font-bold uppercase tracking-wider mb-2">
+<span class="material-symbols-outlined text-sm">emoji_events</span>
+                Leaderboard
+            </div>
+<h1 class="text-text-main-light dark:text-text-main-dark text-4xl sm:text-5xl font-black tracking-tighter">
+                Community Stars
+            </h1>
+<p class="text-text-sec-light dark:text-text-sec-dark text-lg font-medium max-w-[600px]">
+                Celebrating the developers sharing the most helpful vibes this week!
+            </p>
+</div>
+<!-- Segmented Controls (Time Filter) -->
+<div class="flex justify-center">
+<div class="flex p-1 bg-surface-light dark:bg-surface-dark rounded-xl border border-[#f4ece6] dark:border-[#3e2b22] shadow-sm">
+<label class="group relative cursor-pointer flex items-center justify-center h-9 px-6 rounded-lg text-sm font-medium text-text-sec-light dark:text-text-sec-dark transition-all has-[:checked]:bg-primary has-[:checked]:text-white has-[:checked]:shadow-md">
+<span class="z-10">Daily</span>
+<input class="hidden" name="time-filter" type="radio" value="Daily"/>
+</label>
+<label class="group relative cursor-pointer flex items-center justify-center h-9 px-6 rounded-lg text-sm font-medium text-text-sec-light dark:text-text-sec-dark transition-all has-[:checked]:bg-primary has-[:checked]:text-white has-[:checked]:shadow-md">
+<span class="z-10">Weekly</span>
+<input checked="" class="hidden" name="time-filter" type="radio" value="Weekly"/>
+</label>
+<label class="group relative cursor-pointer flex items-center justify-center h-9 px-6 rounded-lg text-sm font-medium text-text-sec-light dark:text-text-sec-dark transition-all has-[:checked]:bg-primary has-[:checked]:text-white has-[:checked]:shadow-md">
+<span class="z-10">All-Time</span>
+<input class="hidden" name="time-filter" type="radio" value="All-Time"/>
+</label>
+</div>
+</div>
+<!-- The Podium (Top 3) -->
+<div class="grid grid-cols-1 md:grid-cols-3 gap-6 items-end mt-4 mb-8">
+<!-- 2nd Place -->
+<div class="order-2 md:order-1 flex flex-col items-center bg-surface-light dark:bg-surface-dark p-6 rounded-2xl shadow-sm border border-[#f4ece6] dark:border-[#3e2b22] relative group hover:-translate-y-1 transition-transform duration-300">
+<div class="absolute -top-4 bg-gray-300 text-gray-800 text-xs font-bold px-3 py-1 rounded-full shadow-sm flex items-center gap-1">
+<span class="material-symbols-outlined text-sm">filter_2</span> Silver
+                </div>
+<div class="relative mb-3">
+<div class="w-20 h-20 bg-center bg-cover rounded-full border-4 border-gray-200 dark:border-gray-600 shadow-md" data-alt="Avatar of 2nd place user" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuBq8PgAkvZ4N69H52XfEOx7P_XnPq-TjfmFj0cMWYE3nAbccerAIzR_9fsgVF4vezG70_DqUEvqUeSx8Ax56DQe5XJviXHWUhTOYB3mCBn6xvduukuqDtqRMNADOQF8P1eJ27SRdyS0pJa-YpFdEYOi3vlIOi3PUKk58i2MnzSjYBc10MATBl9W1dbW_-6TcPX7a2GNRXJfqNGjosnABbGPy-j9MnJzybw0uAeTQ0Q9JMKn8IVo6zZJCJ3XWUb6L-EAPBh2QD83osE");'></div>
+</div>
+<h3 class="text-text-main-light dark:text-text-main-dark font-bold text-lg truncate w-full text-center">CodeWizard</h3>
+<p class="text-text-sec-light dark:text-text-sec-dark text-xs mb-3">Front-end Master</p>
+<div class="flex items-center gap-1.5 text-primary font-bold bg-orange-50 dark:bg-orange-900/20 px-3 py-1.5 rounded-lg">
+<span class="material-symbols-outlined text-lg">favorite</span>
+<span>120</span>
+</div>
+</div>
+<!-- 1st Place -->
+<div class="order-1 md:order-2 flex flex-col items-center bg-gradient-to-b from-orange-50 to-white dark:from-[#3d271a] dark:to-surface-dark p-6 pb-8 rounded-2xl shadow-lg border-2 border-primary/20 relative z-10 scale-105 group hover:-translate-y-1 transition-transform duration-300">
+<div class="absolute -top-5 bg-yellow-400 text-yellow-900 text-sm font-black px-4 py-1.5 rounded-full shadow-md flex items-center gap-1">
+<span class="material-symbols-outlined text-base">crown</span> GOLD
+                </div>
+<div class="relative mb-4 mt-2">
+<div class="absolute -inset-1 bg-gradient-to-r from-yellow-400 to-primary rounded-full blur opacity-40 group-hover:opacity-60 transition-opacity"></div>
+<div class="relative w-24 h-24 bg-center bg-cover rounded-full border-4 border-yellow-400 shadow-xl" data-alt="Avatar of 1st place user" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuCpZMJK0xCI7GYumCmOpVP-3agsvkYFK0FfUnhJ7nqy6bJKFJYLoKTUtmop_rhA9-2hHvpBJyfCUr7WDfqf2fU-3Ed7CMacoYusgzxebC-Filtnxwx6_PG9GrfOdddvNkKovFSszLHfySteXRm9Krpo6uAWWn8NIr1WphfGnAjaLsnhC-gj6WR_11fE5fN-EyyAagT4kK2Nj8UOJC4ldDgSDKeHbdRKJQaJhbIM9rk3CcvC1Dj9jcjLsDWh-hFDnHXOWVrKfuH0_kI");'></div>
+<div class="absolute -bottom-2 -right-2 bg-primary text-white p-1 rounded-full border-2 border-white dark:border-surface-dark flex items-center justify-center">
+<span class="material-symbols-outlined text-sm">workspace_premium</span>
+</div>
+</div>
+<h3 class="text-text-main-light dark:text-text-main-dark font-black text-xl truncate w-full text-center">DevNewbie99</h3>
+<p class="text-text-sec-light dark:text-text-sec-dark text-sm mb-4">Sharing daily learnings</p>
+<div class="flex items-center gap-2 text-white font-bold bg-primary px-4 py-2 rounded-xl shadow-md shadow-primary/30">
+<span class="material-symbols-outlined">favorite</span>
+<span>154 Likes</span>
+</div>
+</div>
+<!-- 3rd Place -->
+<div class="order-3 md:order-3 flex flex-col items-center bg-surface-light dark:bg-surface-dark p-6 rounded-2xl shadow-sm border border-[#f4ece6] dark:border-[#3e2b22] relative group hover:-translate-y-1 transition-transform duration-300">
+<div class="absolute -top-4 bg-orange-200 text-orange-900 text-xs font-bold px-3 py-1 rounded-full shadow-sm flex items-center gap-1">
+<span class="material-symbols-outlined text-sm">filter_3</span> Bronze
+                </div>
+<div class="relative mb-3">
+<div class="w-20 h-20 bg-center bg-cover rounded-full border-4 border-orange-200 dark:border-orange-800 shadow-md" data-alt="Avatar of 3rd place user" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuCFlJTIVLGMP2P4QV6upWR99RdW7ezexyX5tLdL064b6J-09pvQBTjfF0bhD4OdUU3po84Clm5d75Cj5CDrkBCkDhegMC36oKQeQR9GJXEtSLo7OfT7zfQ3SQ6YOtwoH-PNd1KNdhaHlGvBTCgtqCmeVkEsJSnl778Db1pGjIQeRX--omjrNjL6a0GnlU9aiUATcZQWLFu2_b3OKSnr7bnTVkXRjY0jNXjFXxtCiLM75cVuqr6DktS2pdJHi-530O6PE295F00Pu_0");'></div>
+</div>
+<h3 class="text-text-main-light dark:text-text-main-dark font-bold text-lg truncate w-full text-center">JS_Fan</h3>
+<p class="text-text-sec-light dark:text-text-sec-dark text-xs mb-3">JavaScript Explorer</p>
+<div class="flex items-center gap-1.5 text-primary font-bold bg-orange-50 dark:bg-orange-900/20 px-3 py-1.5 rounded-lg">
+<span class="material-symbols-outlined text-lg">favorite</span>
+<span>98</span>
+</div>
+</div>
+</div>
+<!-- Ranking List (4-10) -->
+<div class="flex flex-col gap-3">
+<h4 class="text-text-sec-light dark:text-text-sec-dark text-sm font-bold uppercase tracking-wider mb-1 px-2">Runner Ups</h4>
+<!-- List Item Template -->
+<div class="flex items-center gap-4 bg-surface-light dark:bg-surface-dark p-4 rounded-xl border border-[#f4ece6] dark:border-[#3e2b22] shadow-sm hover:shadow-md transition-all hover:border-primary/30 group">
+<div class="flex-none w-8 text-center font-bold text-text-sec-light dark:text-text-sec-dark group-hover:text-primary transition-colors">4</div>
+<div class="flex-none relative">
+<div class="bg-center bg-no-repeat bg-cover rounded-full h-10 w-10" data-alt="User avatar 4" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuAHd-yfWTsAEj2ldnY01BOrW7vkHWXbwN0kIGHWalKKJwKAfBAJ1V5WrXMAE1nki0-Oe_jILDOF3oxHzX-bCSr8Xfhrz1n4Il6DgONpWuyZ713-m6jGUHKJI5J_qbHNvdooTqdc8pGVzjRZ6jcGNo0pC0MZe4zgbV8lZTTPS32l54wMY5XPf7PXPoRZQG1klLVpCIhqTzacv4XGogepRaqzgfN3wNbGpTgL2SqKfse7ua9EYOLsk8R9j2hTEWWScxlu6jKY811Ynko");'></div>
+</div>
+<div class="flex-1 min-w-0 flex flex-col sm:flex-row sm:items-center gap-0 sm:gap-4">
+<p class="text-text-main-light dark:text-text-main-dark font-semibold truncate">ReactRookie</p>
+<p class="text-text-sec-light dark:text-text-sec-dark text-sm truncate sm:border-l sm:border-gray-200 sm:dark:border-gray-700 sm:pl-4">React State Mastery</p>
+</div>
+<div class="flex-none flex items-center gap-1 text-text-sec-light dark:text-text-sec-dark font-medium bg-background-light dark:bg-background-dark px-3 py-1 rounded-lg">
+<span class="material-symbols-outlined text-primary text-sm filled">favorite</span>
+<span>85</span>
+</div>
+</div>
+<div class="flex items-center gap-4 bg-surface-light dark:bg-surface-dark p-4 rounded-xl border border-[#f4ece6] dark:border-[#3e2b22] shadow-sm hover:shadow-md transition-all hover:border-primary/30 group">
+<div class="flex-none w-8 text-center font-bold text-text-sec-light dark:text-text-sec-dark group-hover:text-primary transition-colors">5</div>
+<div class="flex-none relative">
+<div class="bg-center bg-no-repeat bg-cover rounded-full h-10 w-10" data-alt="User avatar 5" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuBWrFfEFXlvzSXWbUwjG-FdZxmXpcslobjW8pmbjVczdUwVUA9u00mNKsl5PlHgWyP2ZVa41Op_2TT9dyIgZID330WdiWXunZqS8jKWwpDdZ2zEBqidsUG2uY9f8ZlzbjkpM9AKaw0748QVd4ZF1sDYbcEMQJfwVF3wNevqLg2SsJlLRGVHstBbzmDbf72rghr-RpU_28h5jZiTWFezopWNiEV_qzxdVeet8vwOzGsSJ8Y9UJNnaG1hWgD5CZRXp9Ue-co-DA4-1_c");'></div>
+</div>
+<div class="flex-1 min-w-0 flex flex-col sm:flex-row sm:items-center gap-0 sm:gap-4">
+<p class="text-text-main-light dark:text-text-main-dark font-semibold truncate">CSS_Ninja</p>
+<p class="text-text-sec-light dark:text-text-sec-dark text-sm truncate sm:border-l sm:border-gray-200 sm:dark:border-gray-700 sm:pl-4">Grid vs Flexbox Guide</p>
+</div>
+<div class="flex-none flex items-center gap-1 text-text-sec-light dark:text-text-sec-dark font-medium bg-background-light dark:bg-background-dark px-3 py-1 rounded-lg">
+<span class="material-symbols-outlined text-primary text-sm filled">favorite</span>
+<span>72</span>
+</div>
+</div>
+<div class="flex items-center gap-4 bg-surface-light dark:bg-surface-dark p-4 rounded-xl border border-[#f4ece6] dark:border-[#3e2b22] shadow-sm hover:shadow-md transition-all hover:border-primary/30 group">
+<div class="flex-none w-8 text-center font-bold text-text-sec-light dark:text-text-sec-dark group-hover:text-primary transition-colors">6</div>
+<div class="flex-none relative">
+<div class="bg-center bg-no-repeat bg-cover rounded-full h-10 w-10" data-alt="User avatar 6" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuBj_Og1nxWX8orbPBpKxQjOZ-Z9PtMbsB-6x4HMc_cVrzOaCi55fKNpj_SafVCbfFrxg-s0DE3S5DZ42FwBUcsc2ZbiYKf3EdGu4VtWkLBr7laqaVkQ1wNyclAakQwp2f6XTGO_K7b2hZvH5CP18YnTe2ODP_D5Q-Ji-2TsGar4dE6Socv6MGmAg3HAYTMWl9X-hHATkVflRQomXPfQXyrWWTKDgqyle-1RVbfum45aPHLBr-tKok0nrpybFoylRvkDUpn_CNvAvZI");'></div>
+</div>
+<div class="flex-1 min-w-0 flex flex-col sm:flex-row sm:items-center gap-0 sm:gap-4">
+<p class="text-text-main-light dark:text-text-main-dark font-semibold truncate">Pythonista</p>
+<p class="text-text-sec-light dark:text-text-sec-dark text-sm truncate sm:border-l sm:border-gray-200 sm:dark:border-gray-700 sm:pl-4">Understanding List Comprehension</p>
+</div>
+<div class="flex-none flex items-center gap-1 text-text-sec-light dark:text-text-sec-dark font-medium bg-background-light dark:bg-background-dark px-3 py-1 rounded-lg">
+<span class="material-symbols-outlined text-primary text-sm filled">favorite</span>
+<span>68</span>
+</div>
+</div>
+<div class="flex items-center gap-4 bg-surface-light dark:bg-surface-dark p-4 rounded-xl border border-[#f4ece6] dark:border-[#3e2b22] shadow-sm hover:shadow-md transition-all hover:border-primary/30 group">
+<div class="flex-none w-8 text-center font-bold text-text-sec-light dark:text-text-sec-dark group-hover:text-primary transition-colors">7</div>
+<div class="flex-none relative">
+<div class="bg-center bg-no-repeat bg-cover rounded-full h-10 w-10" data-alt="User avatar 7" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuD675m9MLrc91ChY8MX0KD9ry01Cct9aZTatY1u7cNRezaLg8wp_tIlaTb-nJ9KqUDPlzttzLfxTUREouE-gqjHUjYizt3fpRRi9hdxbWGeNc84rCvLuIKkxjnq677MQd4EhitPx5WBjQa4Uxt1TKl7goXZ5mlnJ7ip8MZ1Hl7YXL5-kbln4mvc3DuiQz_34o8kBqy5vnHKcT-yf5uv4Eg20Pa-xUQ4h2j7Keo1P64sAgG4UruUvAkaxY3iOptKcW7YD6Q-uRd05vY");'></div>
+</div>
+<div class="flex-1 min-w-0 flex flex-col sm:flex-row sm:items-center gap-0 sm:gap-4">
+<p class="text-text-main-light dark:text-text-main-dark font-semibold truncate">VimLover</p>
+<p class="text-text-sec-light dark:text-text-sec-dark text-sm truncate sm:border-l sm:border-gray-200 sm:dark:border-gray-700 sm:pl-4">Exit Vim in 3 steps</p>
+</div>
+<div class="flex-none flex items-center gap-1 text-text-sec-light dark:text-text-sec-dark font-medium bg-background-light dark:bg-background-dark px-3 py-1 rounded-lg">
+<span class="material-symbols-outlined text-primary text-sm filled">favorite</span>
+<span>54</span>
+</div>
+</div>
+<!-- View More / Encouragement -->
+<div class="mt-4 p-6 rounded-2xl bg-gradient-to-r from-orange-100 to-orange-50 dark:from-[#3d271a] dark:to-surface-dark border border-primary/20 flex flex-col sm:flex-row items-center justify-between gap-4">
+<div class="flex items-center gap-4">
+<div class="bg-white dark:bg-surface-dark p-3 rounded-full text-primary shadow-sm">
+<span class="material-symbols-outlined">rocket_launch</span>
+</div>
+<div>
+<h4 class="text-text-main-light dark:text-text-main-dark font-bold text-lg">Want to be on the board?</h4>
+<p class="text-text-sec-light dark:text-text-sec-dark text-sm">Share your TIL and start earning vibes!</p>
+</div>
+</div>
+<button class="whitespace-nowrap bg-surface-light dark:bg-surface-dark text-text-main-light dark:text-text-main-dark hover:text-primary font-bold py-2 px-6 rounded-xl border border-gray-200 dark:border-gray-700 shadow-sm hover:shadow-md transition-all">
+                    View Full Ranking
+                </button>
+</div>
+</div>
+</main>
+</body></html>

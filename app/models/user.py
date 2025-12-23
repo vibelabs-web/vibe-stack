@@ -18,6 +18,6 @@ class User(Base):
     updated_at = Column(DateTime, default=datetime.utcnow, onupdate=datetime.utcnow)
 
     # We will add relationships later when we create Post/Comment models
-    # posts = relationship("Post", back_populates="author")
+    posts = relationship("Post", back_populates="author")
     # comments = relationship("Comment", back_populates="author")
     # likes = relationship("Like", back_populates="user")

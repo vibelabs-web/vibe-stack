@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Vibelabs My Profile</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#ff8b3d",
+                        "background-light": "#f8f7f5",
+                        "background-dark": "#23170f",
+                        "stone": {
+                            50: '#fafaf9',
+                            100: '#f5f5f4',
+                            200: '#e7e5e4',
+                            300: '#d6d3d1',
+                            400: '#a8a29e',
+                            500: '#78716c',
+                            600: '#57534e',
+                            700: '#44403c',
+                            800: '#292524',
+                            900: '#1c1917',
+                        }
+                    },
+                    fontFamily: {
+                        "display": ["Inter", "sans-serif"]
+                    },
+                    borderRadius: {"DEFAULT": "0.5rem", "lg": "0.75rem", "xl": "1rem", "2xl": "1.5rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+<style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        /* Custom scrollbar for cleaner look */
+        ::-webkit-scrollbar {
+            width: 8px;
+            height: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: transparent;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #d6d3d1;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #a8a29e;
+        }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark text-stone-900 dark:text-stone-100 min-h-screen flex flex-col font-display selection:bg-primary/30">
+<!-- Top Navigation -->
+<header class="sticky top-0 z-50 w-full border-b border-stone-200 dark:border-stone-800 bg-background-light/80 dark:bg-background-dark/80 backdrop-blur-md">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<div class="flex h-16 items-center justify-between gap-4">
+<!-- Logo & Brand -->
+<div class="flex items-center gap-2 lg:gap-8">
+<a class="flex items-center gap-3 hover:opacity-80 transition-opacity" href="#">
+<div class="flex items-center justify-center size-10 rounded-xl bg-primary text-white shadow-lg shadow-primary/20">
+<span class="material-symbols-outlined">code_blocks</span>
+</div>
+<span class="text-xl font-bold tracking-tight hidden sm:block">Vibelabs</span>
+</a>
+<!-- Desktop Nav -->
+<nav class="hidden md:flex items-center gap-6 text-sm font-medium text-stone-600 dark:text-stone-400">
+<a class="hover:text-primary transition-colors" href="#">Home</a>
+<a class="hover:text-primary transition-colors" href="#">Community</a>
+<a class="text-stone-900 dark:text-stone-100" href="#">Profile</a>
+</nav>
+</div>
+<!-- Right Side -->
+<div class="flex items-center gap-4 flex-1 justify-end">
+<!-- Search Bar -->
+<div class="hidden sm:flex max-w-xs w-full items-center rounded-xl bg-white dark:bg-stone-800 border border-stone-200 dark:border-stone-700 px-3 py-2 focus-within:ring-2 focus-within:ring-primary/50 focus-within:border-primary transition-all">
+<span class="material-symbols-outlined text-stone-400">search</span>
+<input class="w-full bg-transparent border-none p-0 pl-2 text-sm focus:ring-0 placeholder-stone-400 text-stone-900 dark:text-stone-100" placeholder="Search topics..." type="text"/>
+</div>
+<!-- User Actions -->
+<button class="relative p-2 text-stone-500 hover:text-stone-900 dark:hover:text-white transition-colors">
+<span class="material-symbols-outlined">notifications</span>
+<span class="absolute top-2 right-2 size-2 bg-primary rounded-full ring-2 ring-background-light dark:ring-background-dark"></span>
+</button>
+<div class="size-10 rounded-full bg-stone-200 dark:bg-stone-700 bg-cover bg-center border-2 border-white dark:border-stone-600 shadow-sm" data-alt="User profile picture" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuAyOVZSzYaVbckcitUDHjlyqBS8puP65_eqwa8-HO6L7jBs1mdIVxD9105ZnU9jEZmVK_JiyDf-PksG4kwRpIl_voRJBNgh2jHNDpD7Lhn5L9H3IGaFCJqCIrP41wpJb3tjR6eGmGyAFOlP4gAqa9Mq52QzyC3nMRU01Zn9tFLGzmTH12tTpC9vnnf6WL3cVbNf6VKpvlzYfsKmISCBbPFUIqT9Jjd0GFgH_GTn7IXtZIIzsex4R2IXFlWCJH4pyscm9KesxH54G9I');"></div>
+</div>
+</div>
+</div>
+</header>
+<!-- Main Content -->
+<main class="flex-grow w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+<!-- Page Header -->
+<div class="mb-8">
+<h1 class="text-3xl sm:text-4xl font-black tracking-tight text-stone-900 dark:text-white mb-2">My Profile</h1>
+<p class="text-stone-500 dark:text-stone-400 text-lg">Manage your personal information and view your community stats.</p>
+</div>
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
+<!-- Left Sidebar (Profile Summary) -->
+<div class="lg:col-span-4 flex flex-col gap-6">
+<!-- Profile Card -->
+<div class="bg-white dark:bg-stone-900 rounded-2xl p-6 border border-stone-200 dark:border-stone-800 shadow-sm">
+<div class="flex flex-col items-center text-center">
+<div class="relative group cursor-pointer">
+<div class="size-32 rounded-full bg-stone-200 dark:bg-stone-700 bg-cover bg-center border-4 border-white dark:border-stone-800 shadow-md mb-4 transition-transform group-hover:scale-105" data-alt="Kim Coding profile picture" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuBgEq8jnSHr2jGK1PmQ1mQp0Fbr03Jggj01CZprw9tOyjTG2N9MFph88PqTUDNj43gmXeRjsWCnaVuTWtYxt1M3v6LEuV6G_bbgRQkU7AuoW6OxfqHx07-iYjp47v32rIVkbR2z1loWK4e2nGOiEXfXBRgPo6le8lhXoZPwZuWsIc1GNJBkPitsnXzmqItLLgxv_LLPKy4_CM3Fq20cqaoK9RukVjAfXnDe-Tu-RoIhiqASuGgWNhZLJPBYST5OERyBkrgkjZpfLSA');"></div>
+<div class="absolute bottom-4 right-0 bg-primary text-white p-2 rounded-full shadow-lg border-4 border-white dark:border-stone-900 flex items-center justify-center transition-transform hover:scale-110">
+<span class="material-symbols-outlined text-[20px]">edit</span>
+</div>
+</div>
+<h2 class="text-2xl font-bold text-stone-900 dark:text-white mb-1">Kim Coding</h2>
+<p class="text-primary font-medium mb-3">@kimcoding</p>
+<div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-stone-100 dark:bg-stone-800 text-xs font-medium text-stone-500 dark:text-stone-400">
+<span class="material-symbols-outlined text-[16px]">calendar_month</span>
+                            Joined Jan 2024
+                        </div>
+</div>
+<div class="mt-8 pt-8 border-t border-stone-100 dark:border-stone-800 grid grid-cols-2 gap-4">
+<div class="text-center p-3 rounded-xl bg-stone-50 dark:bg-stone-800/50 border border-stone-100 dark:border-stone-800">
+<div class="text-2xl font-black text-stone-900 dark:text-white">15</div>
+<div class="text-xs text-stone-500 dark:text-stone-400 font-medium uppercase tracking-wide mt-1">Posts</div>
+</div>
+<div class="text-center p-3 rounded-xl bg-stone-50 dark:bg-stone-800/50 border border-stone-100 dark:border-stone-800">
+<div class="text-2xl font-black text-stone-900 dark:text-white">124</div>
+<div class="text-xs text-stone-500 dark:text-stone-400 font-medium uppercase tracking-wide mt-1">Likes</div>
+</div>
+</div>
+</div>
+<!-- Menu Card (Mobile/Tablet view mostly, but good for quick links) -->
+<div class="hidden lg:block bg-white dark:bg-stone-900 rounded-2xl p-4 border border-stone-200 dark:border-stone-800 shadow-sm">
+<nav class="flex flex-col gap-1">
+<a class="flex items-center gap-3 px-4 py-3 rounded-xl bg-primary/10 text-primary font-medium" href="#">
+<span class="material-symbols-outlined">settings</span>
+                            Profile Settings
+                        </a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-xl text-stone-600 dark:text-stone-400 hover:bg-stone-50 dark:hover:bg-stone-800 transition-colors" href="#">
+<span class="material-symbols-outlined">article</span>
+                            My Posts
+                        </a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-xl text-stone-600 dark:text-stone-400 hover:bg-stone-50 dark:hover:bg-stone-800 transition-colors" href="#">
+<span class="material-symbols-outlined">favorite</span>
+                            Liked Posts
+                        </a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-xl text-stone-600 dark:text-stone-400 hover:bg-stone-50 dark:hover:bg-stone-800 transition-colors" href="#">
+<span class="material-symbols-outlined">security</span>
+                            Security
+                        </a>
+</nav>
+</div>
+</div>
+<!-- Right Column (Content Area) -->
+<div class="lg:col-span-8">
+<!-- Tabs (Mobile/Tablet visible, Desktop redundant but good for explicit context) -->
+<div class="flex overflow-x-auto pb-4 mb-4 border-b border-stone-200 dark:border-stone-800 gap-8 lg:hidden">
+<button class="whitespace-nowrap pb-2 border-b-2 border-primary text-primary font-bold text-sm">Profile Settings</button>
+<button class="whitespace-nowrap pb-2 border-b-2 border-transparent text-stone-500 hover:text-stone-800 dark:text-stone-400 dark:hover:text-stone-200 font-medium text-sm transition-colors">My Posts</button>
+<button class="whitespace-nowrap pb-2 border-b-2 border-transparent text-stone-500 hover:text-stone-800 dark:text-stone-400 dark:hover:text-stone-200 font-medium text-sm transition-colors">Liked Posts</button>
+</div>
+<!-- Form Card -->
+<div class="bg-white dark:bg-stone-900 rounded-2xl border border-stone-200 dark:border-stone-800 shadow-sm overflow-hidden">
+<div class="p-6 sm:p-8">
+<div class="flex items-center justify-between mb-8">
+<div>
+<h3 class="text-xl font-bold text-stone-900 dark:text-white">Basic Information</h3>
+<p class="text-sm text-stone-500 dark:text-stone-400">Update your personal details visible to the community.</p>
+</div>
+</div>
+<form action="#" class="space-y-6" onsubmit="event.preventDefault();">
+<div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+<!-- Nickname -->
+<div class="space-y-2">
+<label class="text-sm font-semibold text-stone-700 dark:text-stone-300" for="nickname">Display Name</label>
+<div class="relative">
+<div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none text-stone-400">
+<span class="material-symbols-outlined text-[20px]">person</span>
+</div>
+<input class="block w-full pl-10 rounded-xl border-stone-200 dark:border-stone-700 bg-stone-50 dark:bg-stone-800 text-stone-900 dark:text-white focus:border-primary focus:ring-primary dark:focus:ring-primary dark:focus:border-primary sm:text-sm h-11 transition-shadow" id="nickname" placeholder="Your nickname" type="text" value="Kim Coding"/>
+</div>
+</div>
+<!-- Email (Read Only) -->
+<div class="space-y-2">
+<label class="text-sm font-semibold text-stone-700 dark:text-stone-300" for="email">Email Address</label>
+<div class="relative">
+<div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none text-stone-400">
+<span class="material-symbols-outlined text-[20px]">mail</span>
+</div>
+<input class="block w-full pl-10 rounded-xl border-stone-200 dark:border-stone-700 bg-stone-100 dark:bg-stone-800/50 text-stone-500 dark:text-stone-400 cursor-not-allowed sm:text-sm h-11" id="email" readonly="" type="email" value="kim@vibelabs.com"/>
+</div>
+</div>
+</div>
+<!-- Bio -->
+<div class="space-y-2">
+<label class="text-sm font-semibold text-stone-700 dark:text-stone-300" for="bio">About Me</label>
+<textarea class="block w-full rounded-xl border-stone-200 dark:border-stone-700 bg-stone-50 dark:bg-stone-800 text-stone-900 dark:text-white focus:border-primary focus:ring-primary sm:text-sm p-4 resize-none transition-shadow" id="bio" placeholder="Tell us a bit about yourself..." rows="4">Beginner developer learning React and Node.js. Love coffee and code! Excited to share my TILs with everyone.</textarea>
+<p class="text-xs text-stone-500 text-right">0 / 250 characters</p>
+</div>
+<!-- Tech Stack (Tags) -->
+<div class="space-y-3">
+<label class="text-sm font-semibold text-stone-700 dark:text-stone-300">My Tech Stack</label>
+<div class="flex flex-wrap gap-2">
+<span class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-primary/10 text-primary text-sm font-medium border border-primary/20">
+                                        React
+                                        <button class="hover:text-primary/70" type="button"><span class="material-symbols-outlined text-[16px]">close</span></button>
+</span>
+<span class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-primary/10 text-primary text-sm font-medium border border-primary/20">
+                                        Node.js
+                                        <button class="hover:text-primary/70" type="button"><span class="material-symbols-outlined text-[16px]">close</span></button>
+</span>
+<span class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-primary/10 text-primary text-sm font-medium border border-primary/20">
+                                        JavaScript
+                                        <button class="hover:text-primary/70" type="button"><span class="material-symbols-outlined text-[16px]">close</span></button>
+</span>
+<button class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg border border-dashed border-stone-300 dark:border-stone-600 text-stone-500 dark:text-stone-400 text-sm font-medium hover:bg-stone-50 dark:hover:bg-stone-800 transition-colors" type="button">
+<span class="material-symbols-outlined text-[16px]">add</span>
+                                        Add Skill
+                                    </button>
+</div>
+</div>
+<!-- Action Buttons -->
+<div class="pt-6 border-t border-stone-100 dark:border-stone-800 flex items-center justify-end gap-3">
+<button class="px-5 py-2.5 rounded-xl text-sm font-medium text-stone-600 dark:text-stone-300 hover:bg-stone-100 dark:hover:bg-stone-800 transition-colors" type="button">Cancel</button>
+<button class="px-5 py-2.5 rounded-xl text-sm font-medium bg-primary text-white shadow-lg shadow-primary/25 hover:bg-primary/90 focus:ring-4 focus:ring-primary/20 transition-all transform active:scale-95" type="submit">Save Changes</button>
+</div>
+</form>
+</div>
+</div>
+<!-- Danger Zone (Optional but good for completeness in settings) -->
+<div class="mt-8 bg-white dark:bg-stone-900 rounded-2xl border border-red-100 dark:border-red-900/30 shadow-sm overflow-hidden">
+<div class="p-6">
+<h3 class="text-base font-bold text-red-600 mb-1">Danger Zone</h3>
+<div class="flex items-center justify-between flex-wrap gap-4">
+<p class="text-sm text-stone-500 dark:text-stone-400">Permanently delete your account and all associated data.</p>
+<button class="px-4 py-2 rounded-lg text-sm font-medium border border-red-200 text-red-600 hover:bg-red-50 dark:hover:bg-red-900/20 dark:border-red-900/50 transition-colors" type="button">Delete Account</button>
+</div>
+</div>
+</div>
+</div>
+</div>
+</main>
+</body></html>

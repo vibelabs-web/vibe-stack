@@ -2,20 +2,17 @@ import React, { useState, useEffect, useRef } from 'react';
 import { useAuthStore } from '../store/authStore';
 import { updateMyProfile } from '../api/users';
 import { uploadFile } from '../api/files';
-import { Button } from '../components/common/Button';
-import { Input } from '../components/common/Input';
-import { Textarea } from '../components/common/Textarea';
-import { Card } from '../components/common/Card';
+import { Layout } from '../components/layout/Layout';
 import { Toast } from '../components/common/Toast';
 import { useNavigate } from 'react-router-dom';
-import { Camera } from 'lucide-react';
+import { getImageUrl } from '../utils/image';
+import styles from './Profile.module.css';
 
 export const Profile: React.FC = () => {
     const { user, updateUser } = useAuthStore();
     const navigate = useNavigate();
     const fileInputRef = useRef<HTMLInputElement>(null);
 
-    const [isEditing, setIsEditing] = useState(false);
     const [isLoading, setIsLoading] = useState(false);
     const [isUploading, setIsUploading] = useState(false);
     const [toast, setToast] = useState<{ message: string; type: 'success' | 'error' } | null>(null);
@@ -24,6 +21,7 @@ export const Profile: React.FC = () => {
     const [nickname, setNickname] = useState('');
     const [bio, setBio] = useState('');
     const [avatarUrl, setAvatarUrl] = useState('');
+    const [isEditing, setIsEditing] = useState(false);
 
     useEffect(() => {
         if (!user) {
@@ -43,21 +41,16 @@ export const Profile: React.FC = () => {
         setIsUploading(true);
         try {
             const data = await uploadFile(file);
-            // Construct full URL if relative
-            // Assuming backend returns relative path like /uploads/...
-            // We need to prepend API base URL's origin or handle it if it's cleaner. 
-            // Ideally backend returns full URL or frontend knows the base.
-            // For now, let's assume valid URL handling or just use the relative path if <img src> can handle it (it can if served from same origin or proxy)
-            // But we are on localhost:5173 and api is localhost:8005. 
-            // So we need to prepend http://localhost:8005 if the returned URL is relative string starting with /uploads.
-
             let fullUrl = data.url;
-            if (data.url.startsWith('/uploads')) {
-                fullUrl = `http://localhost:8005${data.url}`;
+            console.log("Uploaded file URL:", fullUrl); // Debug log
+
+            // Ensure absolute URL if backend returns relative path
+            if (fullUrl.startsWith('/uploads')) {
+                fullUrl = `http://localhost:8005${fullUrl}`;
             }
 
             setAvatarUrl(fullUrl);
-            setToast({ message: '이미지가 업로드되었습니다. 저장 버튼을 눌러 확정해주세요.', type: 'success' });
+            setToast({ message: '이미지가 업로드되었습니다. 저장 버튼을 눌러 적용하세요.', type: 'success' });
         } catch (error) {
             console.error(error);
             setToast({ message: '이미지 업로드에 실패했습니다.', type: 'error' });
@@ -78,7 +71,7 @@ export const Profile: React.FC = () => {
 
             updateUser(updatedUser);
             setIsEditing(false);
-            setToast({ message: '프로필이 성공적으로 수정되었습니다.', type: 'success' });
+            setToast({ message: '프로필이 수정되었습니다.', type: 'success' });
         } catch (error: any) {
             console.error(error);
             const errorMessage = error.response?.data?.detail || '프로필 수정에 실패했습니다.';
@@ -91,52 +84,23 @@ export const Profile: React.FC = () => {
     if (!user) return null;
 
     return (
-        <div style={{ maxWidth: '600px', margin: '0 auto', width: '100%' }}>
-            {toast && (
-                <Toast
-                    message={toast.message}
-                    type={toast.type}
-                    onClose={() => setToast(null)}
-                />
-            )}
+        <Layout>
+            <div className={styles.container}>
+                {toast && (
+                    <Toast
+                        message={toast.message}
+                        type={toast.type}
+                        onClose={() => setToast(null)}
+                    />
+                )}
 
-            <h1 style={{ fontSize: '2rem', fontWeight: 700, marginBottom: '2rem', color: 'var(--deep-blue)' }}>
-                내 프로필
-            </h1>
-
-            <Card>
-                <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', marginBottom: '2rem' }}>
-                    <div
-                        style={{
-                            position: 'relative',
-                            width: '120px',
-                            height: '120px',
-                            marginBottom: '1rem'
-                        }}
-                    >
-                        <div style={{
-                            width: '100%',
-                            height: '100%',
-                            borderRadius: '50%',
-                            backgroundColor: '#E2E8F0',
-                            overflow: 'hidden',
-                            display: 'flex',
-                            alignItems: 'center',
-                            justifyContent: 'center',
-                            border: '4px solid white',
-                            boxShadow: 'var(--shadow-md)'
-                        }}>
-                            {(isEditing ? avatarUrl : user.avatar_url) ? (
-                                <img
-                                    src={isEditing ? avatarUrl : user.avatar_url}
-                                    alt={user.nickname}
-                                    style={{ width: '100%', height: '100%', objectFit: 'cover' }}
-                                />
-                            ) : (
-                                <span style={{ fontSize: '2.5rem' }}>🍊</span>
-                            )}
-                        </div>
-
+                {/* Left Sidebar: Profile Card */}
+                <aside className={styles.profileCard}>
+                    <div className={styles.avatarWrapper}>
+                        <div
+                            className={styles.avatar}
+                            style={{ backgroundImage: `url('${isEditing ? getImageUrl(avatarUrl) : getImageUrl(user.avatar_url)}')` }}
+                        />
                         {isEditing && (
                             <>
                                 <input
@@ -147,97 +111,123 @@ export const Profile: React.FC = () => {
                                     onChange={handleFileChange}
                                 />
                                 <button
+                                    className={styles.editButton}
                                     type="button"
                                     onClick={() => fileInputRef.current?.click()}
                                     disabled={isUploading}
-                                    style={{
-                                        position: 'absolute',
-                                        bottom: '0',
-                                        right: '0',
-                                        backgroundColor: 'var(--deep-blue)',
-                                        color: 'white',
-                                        border: 'none',
-                                        borderRadius: '50%',
-                                        width: '36px',
-                                        height: '36px',
-                                        display: 'flex',
-                                        alignItems: 'center',
-                                        justifyContent: 'center',
-                                        cursor: 'pointer',
-                                        boxShadow: '0 2px 4px rgba(0,0,0,0.2)'
-                                    }}
                                 >
-                                    {isUploading ? '...' : <Camera size={18} />}
+                                    <span className="material-symbols-outlined" style={{ fontSize: '1.25rem' }}>camera_alt</span>
                                 </button>
                             </>
                         )}
                     </div>
 
-                    {!isEditing && (
-                        <>
-                            <h2 style={{ fontSize: '1.5rem', fontWeight: 700, marginBottom: '0.5rem' }}>{user.nickname}</h2>
-                            <p style={{ color: 'var(--text-secondary)', marginBottom: '1rem' }}>{user.email}</p>
-                            {user.bio && (
-                                <p style={{ textAlign: 'center', color: 'var(--text-secondary)', lineHeight: 1.6, maxWidth: '400px' }}>
-                                    {user.bio}
-                                </p>
-                            )}
-                        </>
+                    <h2 className={styles.nickname}>{nickname}</h2>
+                    <p className={styles.handle}>@{nickname.toLowerCase()}</p>
+
+                    <p className={styles.bio}>
+                        {bio || "자기소개가 없습니다."}
+                    </p>
+
+                    <div className={styles.stats}>
+                        <div className={styles.statItem}>
+                            <span className={styles.statValue}>0</span>
+                            <span className={styles.statLabel}>게시글</span>
+                        </div>
+                        <div className={styles.statItem}>
+                            <span className={styles.statValue}>0</span>
+                            <span className={styles.statLabel}>좋아요</span>
+                        </div>
+                        <div className={styles.statItem}>
+                            <span className={styles.statValue}>-</span>
+                            <span className={styles.statLabel}>랭킹</span>
+                        </div>
+                    </div>
+
+                    <div className={styles.joinDate}>
+                        <span className="material-symbols-outlined" style={{ fontSize: '1rem' }}>calendar_today</span>
+                        <span>가입일: {new Date(user.created_at).toLocaleDateString()}</span>
+                    </div>
+                </aside>
+
+                {/* Main Content Area */}
+                <main className={styles.mainContent}>
+                    {isEditing ? (
+                        <div className={styles.contentCard}>
+                            <h3 className={styles.sectionTitle}>
+                                <span className="material-symbols-outlined">edit</span>
+                                프로필 수정
+                            </h3>
+                            <form onSubmit={handleSubmit}>
+                                <div className={styles.formGroup}>
+                                    <label className={styles.label}>닉네임</label>
+                                    <input
+                                        className={styles.input}
+                                        value={nickname}
+                                        onChange={(e) => setNickname(e.target.value)}
+                                        placeholder="닉네임을 입력하세요"
+                                    />
+                                </div>
+
+                                <div className={styles.formGroup}>
+                                    <label className={styles.label}>프로필 이미지 URL</label>
+                                    <input
+                                        className={styles.input}
+                                        value={avatarUrl}
+                                        onChange={(e) => setAvatarUrl(e.target.value)}
+                                        placeholder="왼쪽의 카메라 아이콘을 클릭하거나 URL을 입력하세요"
+                                    />
+                                </div>
+
+                                <div className={styles.formGroup}>
+                                    <label className={styles.label}>자기소개</label>
+                                    <textarea
+                                        className={styles.textarea}
+                                        value={bio}
+                                        onChange={(e) => setBio(e.target.value)}
+                                        placeholder="자신을 자유롭게 소개해주세요..."
+                                    />
+                                </div>
+
+                                <div className={styles.actions}>
+                                    <button
+                                        type="button"
+                                        className={styles.cancelBtn}
+                                        onClick={() => {
+                                            setIsEditing(false);
+                                            setNickname(user.nickname);
+                                            setBio(user.bio || '');
+                                            setAvatarUrl(user.avatar_url || '');
+                                        }}
+                                    >
+                                        취소
+                                    </button>
+                                    <button type="submit" className={styles.saveBtn} disabled={isLoading}>
+                                        {isLoading ? '저장 중...' : '변경사항 저장'}
+                                    </button>
+                                </div>
+                            </form>
+                        </div>
+                    ) : (
+                        <div className={styles.contentCard}>
+                            <div className={styles.sectionTitle} style={{ justifyContent: 'space-between' }}>
+                                <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+                                    <span className="material-symbols-outlined">article</span>
+                                    <span>내 활동</span>
+                                </div>
+                                <button className={styles.cancelBtn} style={{ padding: '0.5rem 1rem', fontSize: '0.8rem' }} onClick={() => setIsEditing(true)}>
+                                    프로필 수정
+                                </button>
+                            </div>
+
+                            <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem', alignItems: 'center', justifyContent: 'center', padding: '3rem 0', color: 'var(--text-muted-light)' }}>
+                                <span className="material-symbols-outlined" style={{ fontSize: '3rem', opacity: 0.5 }}>post_add</span>
+                                <p>아직 활동 내역이 없습니다. 첫 글을 작성해보세요!</p>
+                            </div>
+                        </div>
                     )}
-                </div>
-
-                {isEditing ? (
-                    <form onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
-                        <Input
-                            label="닉네임"
-                            value={nickname}
-                            onChange={(e) => setNickname(e.target.value)}
-                            placeholder="닉네임을 입력하세요"
-                            required
-                        />
-                        <div style={{ display: 'flex', flexDirection: 'column', gap: '4px' }}>
-                            <Input
-                                label="프로필 이미지 URL (직접 입력 또는 위의 카메라 버튼 클릭)"
-                                value={avatarUrl}
-                                onChange={(e) => setAvatarUrl(e.target.value)}
-                                placeholder="http://..."
-                                disabled={isUploading}
-                            />
-                        </div>
-
-                        <Textarea
-                            label="한줄 소개"
-                            value={bio}
-                            onChange={(e) => setBio(e.target.value)}
-                            placeholder="나를 표현하는 한마디를 적어보세요"
-                            rows={3}
-                        />
-
-                        <div style={{ display: 'flex', gap: '1rem', marginTop: '1rem' }}>
-                            <Button
-                                type="button"
-                                variant="ghost"
-                                onClick={() => {
-                                    setIsEditing(false);
-                                    setNickname(user.nickname);
-                                    setBio(user.bio || '');
-                                    setAvatarUrl(user.avatar_url || '');
-                                }}
-                                fullWidth
-                            >
-                                취소
-                            </Button>
-                            <Button type="submit" isLoading={isLoading} fullWidth>
-                                저장하기
-                            </Button>
-                        </div>
-                    </form>
-                ) : (
-                    <Button onClick={() => setIsEditing(true)} fullWidth variant="secondary">
-                        프로필 수정하기
-                    </Button>
-                )}
-            </Card>
-        </div>
+                </main>
+            </div>
+        </Layout>
     );
 };

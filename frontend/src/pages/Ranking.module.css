@@ -1,0 +1,238 @@
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 1rem;
+}
+
+.header {
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+.title {
+    font-size: 2rem;
+    font-weight: 800;
+    color: var(--text-main-light);
+    margin-bottom: 0.5rem;
+}
+
+body.dark .title {
+    color: var(--text-main-dark);
+}
+
+.subtitle {
+    color: var(--text-muted-light);
+    font-size: 1rem;
+}
+
+/* Time Filters */
+.filters {
+    display: flex;
+    justify-content: center;
+    gap: 0.5rem;
+    margin-bottom: 3rem;
+    background-color: var(--bg-surface-light);
+    padding: 0.25rem;
+    border-radius: 9999px;
+    width: fit-content;
+    margin-left: auto;
+    margin-right: auto;
+    box-shadow: var(--shadow-soft);
+}
+
+body.dark .filters {
+    background-color: var(--bg-surface-dark);
+}
+
+.filterBtn {
+    padding: 0.5rem 1.5rem;
+    border-radius: 9999px;
+    border: none;
+    background: transparent;
+    color: var(--text-muted-light);
+    font-weight: 600;
+    font-size: 0.875rem;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.filterBtnActive {
+    background-color: var(--color-primary);
+    color: white;
+    box-shadow: 0 2px 10px rgba(255, 139, 61, 0.3);
+}
+
+/* Top 3 Podium */
+.podium {
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    gap: 1rem;
+    margin-bottom: 4rem;
+    height: 250px;
+}
+
+.podiumItem {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 120px;
+    position: relative;
+}
+
+.podiumAvatar {
+    width: 4rem;
+    height: 4rem;
+    border-radius: 9999px;
+    background-size: cover;
+    background-position: center;
+    border: 4px solid var(--bg-surface-light);
+    box-shadow: var(--shadow-soft);
+    margin-bottom: 1rem;
+    z-index: 2;
+}
+
+.rank1 .podiumAvatar {
+    width: 5rem;
+    height: 5rem;
+    border-color: #ffd700;
+}
+
+.rank2 .podiumAvatar {
+    border-color: #c0c0c0;
+}
+
+.rank3 .podiumAvatar {
+    border-color: #cd7f32;
+}
+
+.podiumBase {
+    width: 100%;
+    background: linear-gradient(to bottom, var(--bg-surface-light), var(--bg-light));
+    border-radius: var(--radius-lg) var(--radius-lg) 0 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    padding-top: 1rem;
+    box-shadow: var(--shadow-soft);
+    position: relative;
+}
+
+body.dark .podiumBase {
+    background: linear-gradient(to bottom, var(--bg-surface-dark), var(--bg-dark));
+}
+
+.rank1 .podiumBase {
+    height: 160px;
+    background: linear-gradient(180deg, rgba(255, 215, 0, 0.2) 0%, rgba(255, 215, 0, 0.05) 100%);
+}
+
+.rank2 .podiumBase {
+    height: 120px;
+    background: linear-gradient(180deg, rgba(192, 192, 192, 0.2) 0%, rgba(192, 192, 192, 0.05) 100%);
+}
+
+.rank3 .podiumBase {
+    height: 100px;
+    background: linear-gradient(180deg, rgba(205, 127, 50, 0.2) 0%, rgba(205, 127, 50, 0.05) 100%);
+}
+
+.rankNumber {
+    font-size: 2rem;
+    font-weight: 800;
+    opacity: 0.5;
+}
+
+.rank1 .rankNumber {
+    color: #ffd700;
+}
+
+.rank2 .rankNumber {
+    color: #c0c0c0;
+}
+
+.rank3 .rankNumber {
+    color: #cd7f32;
+}
+
+.podiumName {
+    font-weight: 700;
+    margin-bottom: 0.25rem;
+    color: var(--text-main-light);
+}
+
+body.dark .podiumName {
+    color: var(--text-main-dark);
+}
+
+.podiumPoints {
+    font-size: 0.875rem;
+    color: var(--color-primary);
+    font-weight: 600;
+}
+
+/* List Items */
+.list {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.listItem {
+    display: flex;
+    align-items: center;
+    padding: 1rem;
+    background-color: var(--bg-surface-light);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-soft);
+    transition: transform 0.2s;
+}
+
+body.dark .listItem {
+    background-color: var(--bg-surface-dark);
+}
+
+.listItem:hover {
+    transform: translateX(4px);
+}
+
+.listRank {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: var(--text-muted-light);
+    width: 3rem;
+    text-align: center;
+}
+
+.listAvatar {
+    width: 2.5rem;
+    height: 2.5rem;
+    border-radius: 9999px;
+    background-size: cover;
+    background-position: center;
+    margin-right: 1rem;
+}
+
+.listInfo {
+    flex: 1;
+}
+
+.listName {
+    font-weight: 700;
+    color: var(--text-main-light);
+}
+
+body.dark .listName {
+    color: var(--text-main-dark);
+}
+
+.listLevel {
+    font-size: 0.75rem;
+    color: var(--text-muted-light);
+}
+
+.listPoints {
+    font-weight: 700;
+    color: var(--color-primary);
+}

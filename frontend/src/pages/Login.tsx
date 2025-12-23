@@ -66,7 +66,7 @@ export const Login: React.FC = () => {
                     </Button>
                 </form>
                 <div style={{ marginTop: '16px', textAlign: 'center', fontSize: '0.875rem' }}>
-                    아직 계정이 없으신가요? <Link to="/register" style={{ color: 'var(--vibe-orange)' }}>회원가입</Link>
+                    아직 계정이 없으신가요? <Link to="/register" style={{ color: 'var(--color-primary)', textDecoration: 'none', fontWeight: 600 }}>회원가입</Link>
                 </div>
             </Card>
             {error && <Toast message={error} type="error" onClose={() => setError('')} />}

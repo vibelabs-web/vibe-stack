@@ -1,11 +1,25 @@
-from fastapi import APIRouter, Depends, HTTPException, status
+from fastapi import APIRouter, Depends, HTTPException, status, Query
 from sqlalchemy.orm import Session
+from typing import List
 from app.database import get_db
 from app.models.user import User
 from app.schemas.user import UserUpdate, UserResponse
 from app.utils.deps import get_current_user
 
 router = APIRouter(prefix="/api/users", tags=["users"])
+
+
+@router.get("/ranking", response_model=List[UserResponse])
+def get_user_ranking(
+    period: str = Query("weekly", description="Period for ranking: daily, weekly, all"),
+    db: Session = Depends(get_db)
+):
+    """
+    Get user ranking based on activity (posts count, etc.)
+    For now, returns users ordered by creation date as a placeholder
+    """
+    users = db.query(User).filter(User.is_active == True).limit(10).all()
+    return users
 
 @router.get("/me", response_model=UserResponse)
 def read_user_me(current_user: User = Depends(get_current_user)):

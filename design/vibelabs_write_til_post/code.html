@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Vibelabs - Write TIL Post</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#ff8b3d",
+                        "primary-dark": "#e57224",
+                        "background-light": "#f8f7f5",
+                        "background-dark": "#23170f",
+                        "surface-light": "#ffffff",
+                        "surface-dark": "#2d1f16",
+                        "border-light": "#ead8cd",
+                        "border-dark": "#4a352a",
+                        "text-main-light": "#1d130c",
+                        "text-main-dark": "#f8f7f5",
+                        "text-sub-light": "#a16a45",
+                        "text-sub-dark": "#d4b8a5",
+                    },
+                    fontFamily: {
+                        "display": ["Inter", "sans-serif"],
+                        "mono": ["ui-monospace", "SFMono-Regular", "Menlo", "Monaco", "Consolas", "monospace"],
+                    },
+                    borderRadius: {"DEFAULT": "0.5rem", "lg": "1rem", "xl": "1.5rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+<style>
+        /* Custom scrollbar for better aesthetics */
+        ::-webkit-scrollbar {
+            width: 8px;
+            height: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: transparent;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #d4b8a5;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #a16a45;
+        }
+        .dark ::-webkit-scrollbar-thumb {
+            background: #4a352a;
+        }
+        .dark ::-webkit-scrollbar-thumb:hover {
+            background: #6b4d3d;
+        }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark text-text-main-light dark:text-text-main-dark font-display h-screen flex overflow-hidden selection:bg-primary/30">
+<!-- Sidebar -->
+<aside class="w-64 hidden md:flex flex-col border-r border-border-light dark:border-border-dark bg-surface-light dark:bg-surface-dark h-full shrink-0 z-20 transition-colors duration-300">
+<div class="p-6 flex flex-col h-full justify-between">
+<div class="flex flex-col gap-8">
+<!-- Logo area -->
+<div class="flex items-center gap-3 px-2">
+<div class="bg-center bg-no-repeat aspect-square bg-cover rounded-full size-10 shadow-sm ring-2 ring-primary/20" data-alt="Vibelabs abstract colorful geometric logo" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuAEz2NM_Far2nV6aver3l9qk7mTCSTfKN0izv0pRTqD8hxJXPbDS72itnTmATElCMJtIuvj26VrBrHSpklbFEwlHgiocvNcQO8pbf_TSHR9WY76JDE7DmKgamU4brHg6VabUtQTmAzW9wfefiG1rXHna6O9MbHoPRdwnFe5tqnJ-5YxKvbadcsG1dvWT1jbqti2Py0FznLxDhpZN2luA-8xTV68OOFuqH4UKH-da3iyYd3gGn6pyF9xn793rcmGf4mWSKAAAgIY24E");'></div>
+<div class="flex flex-col">
+<h1 class="text-text-main-light dark:text-text-main-dark text-base font-bold leading-tight">Vibelabs</h1>
+<p class="text-text-sub-light dark:text-text-sub-dark text-xs font-normal">Community</p>
+</div>
+</div>
+<!-- Navigation -->
+<div class="flex flex-col gap-2">
+<a class="group flex items-center gap-3 px-3 py-2 rounded-xl text-text-sub-light dark:text-text-sub-dark hover:bg-primary/10 hover:text-primary transition-all duration-200" href="#">
+<span class="material-symbols-outlined text-[24px]" data-weight="fill">home</span>
+<span class="text-sm font-medium">Home</span>
+</a>
+<a class="group flex items-center gap-3 px-3 py-2 rounded-xl text-text-sub-light dark:text-text-sub-dark hover:bg-primary/10 hover:text-primary transition-all duration-200" href="#">
+<span class="material-symbols-outlined text-[24px]">book_2</span>
+<span class="text-sm font-medium">My TILs</span>
+</a>
+<a class="group flex items-center gap-3 px-3 py-2 rounded-xl text-text-sub-light dark:text-text-sub-dark hover:bg-primary/10 hover:text-primary transition-all duration-200" href="#">
+<span class="material-symbols-outlined text-[24px]">explore</span>
+<span class="text-sm font-medium">Explore</span>
+</a>
+<a class="group flex items-center gap-3 px-3 py-2 rounded-xl text-text-sub-light dark:text-text-sub-dark hover:bg-primary/10 hover:text-primary transition-all duration-200" href="#">
+<span class="material-symbols-outlined text-[24px]">bookmark</span>
+<span class="text-sm font-medium">Bookmarks</span>
+</a>
+</div>
+<!-- Create Button (Mobile/Sidebar context) -->
+<button class="flex items-center justify-center gap-2 w-full bg-primary text-white py-3 rounded-xl hover:bg-primary-dark transition-colors shadow-lg shadow-primary/20 mt-2">
+<span class="material-symbols-outlined text-[20px]">edit_square</span>
+<span class="text-sm font-bold">Write TIL</span>
+</button>
+</div>
+<!-- Profile Snippet -->
+<div class="flex items-center gap-3 px-2 py-3 mt-auto rounded-xl hover:bg-primary/5 cursor-pointer">
+<div class="bg-center bg-no-repeat aspect-square bg-cover rounded-full size-8 ring-2 ring-white dark:ring-surface-dark" data-alt="User profile picture showing a smiling person" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuB61ICww-PsS9HtMopRI0IK92AXTXh5T1aHM-pTUy8WwkcDZPf40p1yibVgKf-JKK4EnfLoULpprvhCZyV1s1lw6_lGRO3OgezBuv_qJdCZkGexWgmyrroMKnnh4wYXuYX1OrkgvlMZ955B5xYlSmOriqVaM_M3Irrd6GJIxem4A-P0QRR979Al-ILo2XHfHXBFNlCzqITYfORD26owqa7sojlKJyHRjg7G2VGklXQAn-k0Wa2KeZZfFAHpv8nno6h4ejSMpFBcj9o");'></div>
+<div class="flex flex-col">
+<p class="text-sm font-bold text-text-main-light dark:text-text-main-dark">Alex Dev</p>
+<p class="text-xs text-text-sub-light dark:text-text-sub-dark">Beginner</p>
+</div>
+</div>
+</div>
+</aside>
+<!-- Main Content -->
+<div class="flex-1 flex flex-col min-w-0 bg-background-light dark:bg-background-dark transition-colors duration-300">
+<!-- Header -->
+<header class="h-16 border-b border-border-light dark:border-border-dark bg-background-light/80 dark:bg-background-dark/80 backdrop-blur-md sticky top-0 z-10 flex items-center justify-between px-6 md:px-10 shrink-0">
+<div class="flex items-center gap-4">
+<!-- Breadcrumbs -->
+<nav class="flex items-center text-sm">
+<a class="text-text-sub-light dark:text-text-sub-dark hover:text-primary transition-colors" href="#">Home</a>
+<span class="material-symbols-outlined text-base mx-2 text-text-sub-light dark:text-text-sub-dark">chevron_right</span>
+<span class="text-text-main-light dark:text-text-main-dark font-medium">Write TIL</span>
+</nav>
+</div>
+<div class="flex items-center gap-4">
+<span class="text-xs font-medium text-text-sub-light dark:text-text-sub-dark hidden sm:block">Draft saved just now</span>
+<button class="md:hidden p-2 text-text-main-light dark:text-text-main-dark">
+<span class="material-symbols-outlined">menu</span>
+</button>
+</div>
+</header>
+<!-- Scrollable Content Area -->
+<main class="flex-1 overflow-y-auto p-4 md:p-8 md:px-16 flex justify-center">
+<div class="w-full max-w-6xl grid grid-cols-1 lg:grid-cols-12 gap-8">
+<!-- Main Editor Column -->
+<div class="lg:col-span-8 flex flex-col gap-6">
+<!-- Title Input Section -->
+<div class="flex flex-col gap-2">
+<input class="w-full bg-transparent text-3xl md:text-4xl font-bold text-text-main-light dark:text-text-main-dark placeholder:text-text-sub-light/50 dark:placeholder:text-text-sub-dark/30 border-none focus:ring-0 px-0 py-2 leading-tight" placeholder="Give your learning a catchy title!" type="text"/>
+</div>
+<!-- Editor Card -->
+<div class="bg-surface-light dark:bg-surface-dark rounded-xl shadow-sm border border-border-light dark:border-border-dark flex flex-col overflow-hidden min-h-[500px]">
+<!-- Tabs -->
+<div class="flex border-b border-border-light dark:border-border-dark px-6 bg-background-light/30 dark:bg-background-dark/30">
+<button class="flex items-center gap-2 border-b-[3px] border-primary text-text-main-light dark:text-text-main-dark px-4 py-3 text-sm font-bold tracking-wide">
+<span class="material-symbols-outlined text-[18px]">edit</span>
+                                Write
+                            </button>
+<button class="flex items-center gap-2 border-b-[3px] border-transparent text-text-sub-light dark:text-text-sub-dark hover:text-primary px-4 py-3 text-sm font-bold tracking-wide transition-colors">
+<span class="material-symbols-outlined text-[18px]">visibility</span>
+                                Preview
+                            </button>
+</div>
+<!-- Toolbar -->
+<div class="flex flex-wrap items-center gap-1 p-2 px-4 border-b border-border-light/50 dark:border-border-dark/50 bg-surface-light dark:bg-surface-dark sticky top-0 z-10">
+<button class="p-2 rounded hover:bg-primary/10 text-text-sub-light dark:text-text-sub-dark hover:text-primary transition-colors group relative" title="Bold">
+<span class="material-symbols-outlined text-[20px]">format_bold</span>
+</button>
+<button class="p-2 rounded hover:bg-primary/10 text-text-sub-light dark:text-text-sub-dark hover:text-primary transition-colors" title="Italic">
+<span class="material-symbols-outlined text-[20px]">format_italic</span>
+</button>
+<div class="w-px h-6 bg-border-light dark:bg-border-dark mx-1"></div>
+<button class="p-2 rounded hover:bg-primary/10 text-text-sub-light dark:text-text-sub-dark hover:text-primary transition-colors" title="H1">
+<span class="material-symbols-outlined text-[20px]">title</span>
+</button>
+<button class="p-2 rounded hover:bg-primary/10 text-text-sub-light dark:text-text-sub-dark hover:text-primary transition-colors" title="Quote">
+<span class="material-symbols-outlined text-[20px]">format_quote</span>
+</button>
+<button class="p-2 rounded hover:bg-primary/10 text-text-sub-light dark:text-text-sub-dark hover:text-primary transition-colors" title="Code Block">
+<span class="material-symbols-outlined text-[20px]">code</span>
+</button>
+<div class="w-px h-6 bg-border-light dark:bg-border-dark mx-1"></div>
+<button class="p-2 rounded hover:bg-primary/10 text-text-sub-light dark:text-text-sub-dark hover:text-primary transition-colors" title="Link">
+<span class="material-symbols-outlined text-[20px]">link</span>
+</button>
+<button class="p-2 rounded hover:bg-primary/10 text-text-sub-light dark:text-text-sub-dark hover:text-primary transition-colors" title="Image">
+<span class="material-symbols-outlined text-[20px]">image</span>
+</button>
+<button class="p-2 rounded hover:bg-primary/10 text-text-sub-light dark:text-text-sub-dark hover:text-primary transition-colors" title="List">
+<span class="material-symbols-outlined text-[20px]">format_list_bulleted</span>
+</button>
+</div>
+<!-- Text Area -->
+<div class="flex-1 relative">
+<textarea class="w-full h-full min-h-[400px] p-6 bg-transparent border-none resize-none focus:ring-0 text-text-main-light dark:text-text-main-dark text-base leading-relaxed placeholder:text-text-sub-light/40 dark:placeholder:text-text-sub-dark/30 font-display" placeholder="What did you learn today? Don't worry about being perfect, just share your progress! You can use Markdown here. "></textarea>
+</div>
+<!-- Bottom Meta (Tags) -->
+<div class="p-4 border-t border-border-light dark:border-border-dark bg-background-light/30 dark:bg-background-dark/30 flex items-center gap-4 flex-wrap">
+<span class="text-sm font-medium text-text-sub-light dark:text-text-sub-dark">Tags:</span>
+<div class="flex flex-wrap gap-2">
+<button class="px-3 py-1 rounded-full bg-surface-light dark:bg-surface-dark border border-border-light dark:border-border-dark text-sm text-text-main-light dark:text-text-main-dark hover:border-primary hover:text-primary transition-colors flex items-center gap-1">
+<span>JavaScript</span>
+<span class="material-symbols-outlined text-[14px]">close</span>
+</button>
+<input class="bg-transparent border-none text-sm focus:ring-0 p-0 text-primary placeholder:text-text-sub-light/60" placeholder="+ Add tag" type="text"/>
+</div>
+</div>
+</div>
+<!-- Action Bar -->
+<div class="flex items-center justify-between pt-2 pb-10">
+<button class="px-6 py-3 rounded-lg text-text-sub-light dark:text-text-sub-dark font-medium hover:bg-border-light/50 dark:hover:bg-border-dark/50 transition-colors">
+                             Save Draft
+                         </button>
+<div class="flex gap-4">
+<button class="px-6 py-3 rounded-lg text-primary font-medium hover:bg-primary/10 transition-colors">
+                                Preview
+                            </button>
+<button class="px-8 py-3 rounded-lg bg-primary hover:bg-primary-dark text-white font-bold shadow-lg shadow-primary/25 hover:shadow-primary/40 transition-all transform active:scale-95 flex items-center gap-2">
+<span>Publish</span>
+<span class="material-symbols-outlined text-[20px]">send</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Sidebar Helper Column -->
+<div class="lg:col-span-4 hidden lg:flex flex-col gap-6">
+<!-- Tips Card -->
+<div class="bg-surface-light dark:bg-surface-dark rounded-xl p-6 border border-border-light dark:border-border-dark sticky top-24">
+<div class="flex items-center gap-2 mb-4">
+<span class="material-symbols-outlined text-primary text-[24px]">tips_and_updates</span>
+<h3 class="font-bold text-lg text-text-main-light dark:text-text-main-dark">Markdown Tips</h3>
+</div>
+<p class="text-sm text-text-sub-light dark:text-text-sub-dark mb-4">
+                            Use markdown to format your post. Here is a quick cheat sheet to get you started!
+                        </p>
+<div class="flex flex-col gap-3">
+<div class="flex items-center justify-between p-2 rounded bg-background-light dark:bg-background-dark text-sm">
+<span class="font-mono text-primary"># Header</span>
+<span class="text-text-sub-light dark:text-text-sub-dark">H1 Title</span>
+</div>
+<div class="flex items-center justify-between p-2 rounded bg-background-light dark:bg-background-dark text-sm">
+<span class="font-mono text-primary">**Bold**</span>
+<span class="font-bold text-text-sub-light dark:text-text-sub-dark">Bold Text</span>
+</div>
+<div class="flex items-center justify-between p-2 rounded bg-background-light dark:bg-background-dark text-sm">
+<span class="font-mono text-primary">*Italic*</span>
+<span class="italic text-text-sub-light dark:text-text-sub-dark">Italic Text</span>
+</div>
+<div class="flex items-center justify-between p-2 rounded bg-background-light dark:bg-background-dark text-sm">
+<span class="font-mono text-primary">`Code`</span>
+<span class="font-mono bg-border-light/50 px-1 rounded text-text-sub-light dark:text-text-sub-dark">Code</span>
+</div>
+<div class="flex items-center justify-between p-2 rounded bg-background-light dark:bg-background-dark text-sm">
+<span class="font-mono text-primary">```block```</span>
+<span class="text-xs text-text-sub-light dark:text-text-sub-dark">Code Block</span>
+</div>
+<div class="flex items-center justify-between p-2 rounded bg-background-light dark:bg-background-dark text-sm">
+<span class="font-mono text-primary">[Link](url)</span>
+<span class="text-primary underline cursor-pointer">Link</span>
+</div>
+</div>
+<div class="mt-6 pt-4 border-t border-border-light dark:border-border-dark">
+<p class="text-xs text-text-sub-light dark:text-text-sub-dark text-center">
+                                Need more help? <a class="text-primary hover:underline" href="#">Read our full guide</a>
+</p>
+</div>
+</div>
+<!-- Community Guidelines Snippet -->
+<div class="bg-primary/5 rounded-xl p-6 border border-primary/20 sticky top-[550px]">
+<div class="flex items-center gap-2 mb-2">
+<span class="material-symbols-outlined text-primary text-[20px]">favorite</span>
+<h3 class="font-bold text-base text-text-main-light dark:text-text-main-dark">Be Kind &amp; Helpful</h3>
+</div>
+<p class="text-sm text-text-sub-light dark:text-text-sub-dark leading-relaxed">
+                            Vibelabs is a safe space for beginners. Constructive feedback is welcome, but please keep it warm and encouraging!
+                        </p>
+</div>
+</div>
+</div>
+</main>
+</div>
+<!-- Mobile Navigation Bar (Bottom) -->
+<div class="md:hidden fixed bottom-0 left-0 w-full bg-surface-light dark:bg-surface-dark border-t border-border-light dark:border-border-dark flex justify-around p-3 z-30 pb-safe">
+<a class="flex flex-col items-center gap-1 text-text-sub-light dark:text-text-sub-dark" href="#">
+<span class="material-symbols-outlined">home</span>
+<span class="text-[10px] font-medium">Home</span>
+</a>
+<a class="flex flex-col items-center gap-1 text-text-sub-light dark:text-text-sub-dark" href="#">
+<span class="material-symbols-outlined">search</span>
+<span class="text-[10px] font-medium">Explore</span>
+</a>
+<a class="flex flex-col items-center gap-1 text-primary" href="#">
+<span class="material-symbols-outlined">add_circle</span>
+<span class="text-[10px] font-medium">Write</span>
+</a>
+<a class="flex flex-col items-center gap-1 text-text-sub-light dark:text-text-sub-dark" href="#">
+<span class="material-symbols-outlined">person</span>
+<span class="text-[10px] font-medium">Profile</span>
+</a>
+</div>
+<script>
+        // Simple script to demonstrate active states or interactions if needed.
+        // For pure design request, usually left empty, but adding toggle logic for fun.
+        // No logic added as per instructions.
+    </script>
+</body></html>

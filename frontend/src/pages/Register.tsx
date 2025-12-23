@@ -108,7 +108,7 @@ export const Register: React.FC = () => {
                     </Button>
                 </form>
                 <div style={{ marginTop: '16px', textAlign: 'center', fontSize: '0.875rem' }}>
-                    이미 계정이 있으신가요? <Link to="/login" style={{ color: 'var(--vibe-orange)' }}>로그인</Link>
+                    이미 계정이 있으신가요? <Link to="/login" style={{ color: 'var(--color-primary)', textDecoration: 'none', fontWeight: 600 }}>로그인</Link>
                 </div>
             </Card>
             {error && <Toast message={error} type="error" onClose={() => setError('')} />}

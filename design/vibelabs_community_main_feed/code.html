@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Vibelabs Community Main Feed</title>
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- Theme Configuration -->
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "primary": "#ff8b3d",
+              "background-light": "#f8f7f5",
+              "background-dark": "#23170f",
+              "surface-light": "#ffffff",
+              "surface-dark": "#2d241e",
+              "text-main": "#1d130c",
+              "text-muted": "#a16a45",
+            },
+            fontFamily: {
+              "display": ["Inter", "sans-serif"],
+              "mono": ["Fira Code", "monospace"],
+            },
+            borderRadius: {
+              "DEFAULT": "0.5rem", 
+              "lg": "1rem", 
+              "xl": "1.5rem", 
+              "full": "9999px"
+            },
+            boxShadow: {
+                "soft": "0 4px 20px -2px rgba(29, 19, 12, 0.05)",
+            }
+          },
+        },
+      }
+    </script>
+<!-- Google Fonts -->
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500&amp;display=swap" rel="stylesheet"/>
+<!-- Material Symbols -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .material-symbols-outlined.fill {
+            font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark min-h-screen flex flex-col text-text-main dark:text-[#f4ece6]">
+<!-- Top Navbar -->
+<header class="sticky top-0 z-50 bg-background-light/95 dark:bg-background-dark/95 backdrop-blur-md border-b border-[#ead8cd] dark:border-[#3e2f26] px-4 lg:px-10 py-3">
+<div class="max-w-7xl mx-auto flex items-center justify-between gap-4">
+<div class="flex items-center gap-8">
+<!-- Logo -->
+<a class="flex items-center gap-3 text-text-main dark:text-white hover:opacity-80 transition-opacity" href="#">
+<div class="size-8 text-primary">
+<svg class="w-full h-full" fill="none" viewbox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+<path d="M39.5563 34.1455V13.8546C39.5563 15.708 36.8773 17.3437 32.7927 18.3189C30.2914 18.916 27.263 19.2655 24 19.2655C20.737 19.2655 17.7086 18.916 15.2073 18.3189C11.1227 17.3437 8.44365 15.708 8.44365 13.8546V34.1455C8.44365 35.9988 11.1227 37.6346 15.2073 38.6098C17.7086 39.2069 20.737 39.5564 24 39.5564C27.263 39.5564 30.2914 39.2069 32.7927 38.6098C36.8773 37.6346 39.5563 35.9988 39.5563 34.1455Z" fill="currentColor"></path>
+<path clip-rule="evenodd" d="M10.4485 13.8519C10.4749 13.9271 10.6203 14.246 11.379 14.7361C12.298 15.3298 13.7492 15.9145 15.6717 16.3735C18.0007 16.9296 20.8712 17.2655 24 17.2655C27.1288 17.2655 29.9993 16.9296 32.3283 16.3735C34.2508 15.9145 35.702 15.3298 36.621 14.7361C37.3796 14.246 37.5251 13.9271 37.5515 13.8519C37.5287 13.7876 37.4333 13.5973 37.0635 13.2931C36.5266 12.8516 35.6288 12.3647 34.343 11.9175C31.79 11.0295 28.1333 10.4437 24 10.4437C19.8667 10.4437 16.2099 11.0295 13.657 11.9175C12.3712 12.3647 11.4734 12.8516 10.9365 13.2931C10.5667 13.5973 10.4713 13.7876 10.4485 13.8519ZM37.5563 18.7877C36.3176 19.3925 34.8502 19.8839 33.2571 20.2642C30.5836 20.9025 27.3973 21.2655 24 21.2655C20.6027 21.2655 17.4164 20.9025 14.7429 20.2642C13.1498 19.8839 11.6824 19.3925 10.4436 18.7877V34.1275C10.4515 34.1545 10.5427 34.4867 11.379 35.027C12.298 35.6207 13.7492 36.2054 15.6717 36.6644C18.0007 37.2205 20.8712 37.5564 24 37.5564C27.1288 37.5564 29.9993 37.2205 32.3283 36.6644C34.2508 36.2054 35.702 35.6207 36.621 35.027C37.4573 34.4867 37.5485 34.1546 37.5563 34.1275V18.7877ZM41.5563 13.8546V34.1455C41.5563 36.1078 40.158 37.5042 38.7915 38.3869C37.3498 39.3182 35.4192 40.0389 33.2571 40.5551C30.5836 41.1934 27.3973 41.5564 24 41.5564C20.6027 41.5564 17.4164 41.1934 14.7429 40.5551C12.5808 40.0389 10.6502 39.3182 9.20848 38.3869C7.84205 37.5042 6.44365 36.1078 6.44365 34.1455L6.44365 13.8546C6.44365 12.2684 7.37223 11.0454 8.39581 10.2036C9.43325 9.3505 10.8137 8.67141 12.343 8.13948C15.4203 7.06909 19.5418 6.44366 24 6.44366C28.4582 6.44366 32.5797 7.06909 35.657 8.13948C37.1863 8.67141 38.5667 9.3505 39.6042 10.2036C40.6278 11.0454 41.5563 12.2684 41.5563 13.8546Z" fill="currentColor" fill-rule="evenodd"></path>
+</svg>
+</div>
+<h2 class="text-xl font-bold tracking-tight">Vibelabs</h2>
+</a>
+<!-- Search -->
+<label class="hidden md:flex flex-col min-w-64 h-10 lg:w-[400px]">
+<div class="flex w-full flex-1 items-stretch rounded-xl h-full bg-[#f4ece6] dark:bg-[#2d241e] overflow-hidden focus-within:ring-2 ring-primary/50 transition-all">
+<div class="text-text-muted flex items-center justify-center pl-4 pr-2">
+<span class="material-symbols-outlined text-[20px]">search</span>
+</div>
+<input class="w-full h-full bg-transparent border-none focus:ring-0 text-text-main dark:text-white placeholder:text-text-muted text-sm font-medium" placeholder="Search TILs..." value=""/>
+</div>
+</label>
+</div>
+<!-- Actions -->
+<div class="flex items-center gap-4 lg:gap-8">
+<div class="hidden lg:flex items-center gap-6">
+<a class="text-text-main dark:text-white hover:text-primary dark:hover:text-primary transition-colors text-sm font-semibold" href="#">Explore</a>
+<a class="text-text-main dark:text-white hover:text-primary dark:hover:text-primary transition-colors text-sm font-semibold" href="#">Community</a>
+</div>
+<div class="flex items-center gap-3">
+<button class="hidden sm:flex h-10 px-5 items-center justify-center rounded-xl bg-primary hover:bg-primary/90 transition-colors text-white text-sm font-bold shadow-sm shadow-primary/20">
+                        Share a TIL
+                    </button>
+<button class="size-10 flex items-center justify-center rounded-xl bg-[#f4ece6] dark:bg-[#2d241e] hover:bg-[#ebdccf] dark:hover:bg-[#3e2f26] transition-colors text-text-main dark:text-white">
+<span class="material-symbols-outlined text-[22px]">notifications</span>
+</button>
+<div class="size-10 rounded-full bg-cover bg-center border-2 border-white dark:border-[#2d241e] shadow-sm cursor-pointer" data-alt="User profile avatar of a smiling person" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuD4duVRzCqt15PBAoVMcX-es5hCBeh-I0MzAoUgPQvaJaIQAw7CvT1tL433uWUB6-YVbmEAVJ7Pcrhqe0hqo9xfr4fMZjE1jS7XMFL36ghwXuFTGzFv_t-GB0TkTlE6T08dPR_cEGvmfZqeLd6t-mMtH5efGyRUAJw3wj5CxphxbqOgRZTX-DdhFWCwQ5O3_CygVqJLcM1HTDMs4Y1yeDuxU28lydfSv1koPPCx_8VQsk29w0ad_gQW2sCsewIhtReqvN52Yp8kmWs");'></div>
+</div>
+</div>
+</div>
+</header>
+<!-- Main Layout -->
+<div class="flex-1 max-w-7xl mx-auto w-full px-4 sm:px-6 lg:px-8 py-6">
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-6 xl:gap-8">
+<!-- Left Sidebar Navigation -->
+<aside class="hidden lg:block lg:col-span-3">
+<nav class="sticky top-24 flex flex-col gap-6">
+<!-- User Mini Profile -->
+<div class="flex items-center gap-3 p-4 bg-surface-light dark:bg-surface-dark rounded-xl shadow-soft">
+<div class="size-12 rounded-full bg-cover bg-center" data-alt="User profile avatar" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuCdRhF7OwXM9AljX6eDTKTz0Q8vlyLwm518Ru1AVAOjDkSRSDle1GKmRsJbCJ5EeTYs5HIDfK0V1jSMO_I9fISZU7Lzqkc2R6q3499e7qGhAvYRJjyqn1FhGIGumc9ZDSkF0bxDHB4SUsdVcjXu3zqbfiAphY4YvHRyLgQH3w3Kkpnw2p3WhAbNxMb6pL-5aYTIKAFOJ7V-nwsCR7tYbpJruw6dVMUOl3gzI1HX-WEX7wsfQ7rVFOhw2AQSBOCxOpXo1RWqGE3dsqE");'></div>
+<div>
+<h3 class="font-bold text-text-main dark:text-white">Alex Dev</h3>
+<p class="text-xs text-text-muted font-medium">Beginner Vibe • Lvl 3</p>
+</div>
+</div>
+<!-- Navigation Links -->
+<div class="flex flex-col gap-2">
+<a class="flex items-center gap-3 px-4 py-3 rounded-xl bg-primary/10 text-primary dark:text-primary font-bold transition-all" href="#">
+<span class="material-symbols-outlined fill">home</span>
+<span>Home</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-xl text-text-main dark:text-[#d0c6bf] hover:bg-[#f4ece6] dark:hover:bg-[#3e2f26] font-medium transition-all group" href="#">
+<span class="material-symbols-outlined group-hover:text-primary transition-colors">school</span>
+<span>TIL Board</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-xl text-text-main dark:text-[#d0c6bf] hover:bg-[#f4ece6] dark:hover:bg-[#3e2f26] font-medium transition-all group" href="#">
+<span class="material-symbols-outlined group-hover:text-primary transition-colors">trophy</span>
+<span>Ranking</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-xl text-text-main dark:text-[#d0c6bf] hover:bg-[#f4ece6] dark:hover:bg-[#3e2f26] font-medium transition-all group" href="#">
+<span class="material-symbols-outlined group-hover:text-primary transition-colors">person</span>
+<span>My Profile</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-xl text-text-main dark:text-[#d0c6bf] hover:bg-[#f4ece6] dark:hover:bg-[#3e2f26] font-medium transition-all group" href="#">
+<span class="material-symbols-outlined group-hover:text-primary transition-colors">bookmark</span>
+<span>Bookmarks</span>
+</a>
+</div>
+</nav>
+</aside>
+<!-- Center Feed -->
+<main class="col-span-1 lg:col-span-6 flex flex-col gap-6">
+<!-- Quick Post & Tabs -->
+<div class="bg-surface-light dark:bg-surface-dark rounded-xl shadow-soft p-1">
+<div class="flex border-b border-[#ead8cd] dark:border-[#3e2f26] px-6 gap-8">
+<a class="flex flex-col items-center justify-center border-b-[3px] border-primary text-text-main dark:text-white pb-3 pt-4" href="#">
+<p class="text-sm font-bold tracking-wide">Newest</p>
+</a>
+<a class="flex flex-col items-center justify-center border-b-[3px] border-transparent text-text-muted hover:text-text-main dark:hover:text-white transition-colors pb-3 pt-4" href="#">
+<p class="text-sm font-bold tracking-wide">Top Voted</p>
+</a>
+<a class="flex flex-col items-center justify-center border-b-[3px] border-transparent text-text-muted hover:text-text-main dark:hover:text-white transition-colors pb-3 pt-4" href="#">
+<p class="text-sm font-bold tracking-wide">Trending</p>
+</a>
+</div>
+</div>
+<!-- Card 1: React Hook -->
+<article class="bg-surface-light dark:bg-surface-dark rounded-xl shadow-soft overflow-hidden hover:shadow-md transition-shadow duration-300">
+<div class="p-5 flex flex-col gap-4">
+<!-- Author Header -->
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-3">
+<div class="size-10 rounded-full bg-cover bg-center" data-alt="Avatar of Sarah" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuCCCFApn4yRNdXUG654D7zO4_0U2ufIVsKM44zlQbtVUp7k9yNpOcllWU-K8tn0KpUWW0fFF4kSVRJB9PIXCI9KAcxK9TuZeN4LE--OYKj_vOODa1GLBhcRLW7omm-VCVX3iuG8tgKwzVJjpJ-59HBhCooN6lU-w3dVnzJp3ehtMC583flvRsKsV97bac1eyRgMpzoE47I-WMjGWoMN74SiGeL6TZQW4gLtVhKQgGFhfs-7-GD3hsmStIddp2HpcIGaUCKdsRYJWwI");'></div>
+<div>
+<div class="flex items-center gap-2">
+<h4 class="font-bold text-text-main dark:text-white text-sm">@dev_sarah</h4>
+<span class="bg-green-100 text-green-700 dark:bg-green-900 dark:text-green-100 text-[10px] px-2 py-0.5 rounded-full font-bold uppercase tracking-wider">Pro Vibe</span>
+</div>
+<p class="text-xs text-text-muted">2 hours ago</p>
+</div>
+</div>
+<button class="text-text-muted hover:text-text-main dark:hover:text-white">
+<span class="material-symbols-outlined">more_horiz</span>
+</button>
+</div>
+<!-- Content -->
+<div>
+<h3 class="text-xl font-bold text-text-main dark:text-white mb-2 leading-tight">Finally understood React useEffect! ⚛️</h3>
+<p class="text-text-main/80 dark:text-[#d0c6bf] text-sm leading-relaxed mb-3">
+                                I was always confused about the dependency array, but thinking about it as "synchronizing with an external system" clicked for me. Here is a quick example of a cleanup function I wrote today.
+                            </p>
+<!-- Code Snippet -->
+<div class="bg-[#fcf9f8] dark:bg-[#1e1611] border border-[#f4ece6] dark:border-[#3e2f26] rounded-lg p-3 font-mono text-xs overflow-x-auto text-text-main dark:text-gray-300">
+<span class="text-purple-600 dark:text-purple-400">useEffect</span>(() =&gt; {<br/>
+                                  <span class="text-blue-600 dark:text-blue-400">const</span> sub = api.subscribe();<br/>
+                                  <span class="text-pink-600 dark:text-pink-400">return</span> () =&gt; {<br/>
+                                    sub.unsubscribe();<br/>
+                                  };<br/>
+                                }, []);
+                            </div>
+</div>
+<!-- Tags -->
+<div class="flex flex-wrap gap-2">
+<span class="px-2.5 py-1 rounded-lg bg-primary/10 text-primary text-xs font-semibold hover:bg-primary/20 cursor-pointer transition-colors">#react</span>
+<span class="px-2.5 py-1 rounded-lg bg-primary/10 text-primary text-xs font-semibold hover:bg-primary/20 cursor-pointer transition-colors">#hooks</span>
+<span class="px-2.5 py-1 rounded-lg bg-primary/10 text-primary text-xs font-semibold hover:bg-primary/20 cursor-pointer transition-colors">#javascript</span>
+</div>
+<!-- Divider -->
+<div class="h-px w-full bg-[#f4ece6] dark:bg-[#3e2f26]"></div>
+<!-- Actions -->
+<div class="flex items-center gap-6">
+<button class="flex items-center gap-2 group">
+<span class="material-symbols-outlined text-text-muted group-hover:text-red-500 transition-colors">favorite</span>
+<span class="text-sm font-bold text-text-muted group-hover:text-red-500 transition-colors">124</span>
+</button>
+<button class="flex items-center gap-2 group">
+<span class="material-symbols-outlined text-text-muted group-hover:text-primary transition-colors">chat_bubble</span>
+<span class="text-sm font-bold text-text-muted group-hover:text-primary transition-colors">18</span>
+</button>
+<button class="flex items-center gap-2 group ml-auto">
+<span class="material-symbols-outlined text-text-muted group-hover:text-text-main dark:group-hover:text-white transition-colors">share</span>
+</button>
+</div>
+</div>
+</article>
+<!-- Card 2: CSS Centering -->
+<article class="bg-surface-light dark:bg-surface-dark rounded-xl shadow-soft overflow-hidden hover:shadow-md transition-shadow duration-300">
+<div class="p-5 flex flex-col gap-4">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-3">
+<div class="size-10 rounded-full bg-cover bg-center" data-alt="Avatar of CSS Master" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuDtSJ4EaWOjVIT19bCHJfgxuMpk-1-XkihIWBUVRDXz0_xrG_EfYfhfho742A5otMfPaUV6Y_O_xka-9bWe_Ikoy8IxeEZHqjCJdtILbKDxfFBBO1eYx85IhBoXT1xgM-D6ERygaT8O4b9imqG794q1qni-HkvzRLxxPpruAK5vSx6eFnRUPkLjtcsQmYELSn2du435nLivi_fEB7YvRLRG1iWHrwRBdHxhW4sd9OXrb1BosF8KhP6eaLvs2a-Zxl3apw05q0R1FMM");'></div>
+<div>
+<div class="flex items-center gap-2">
+<h4 class="font-bold text-text-main dark:text-white text-sm">@css_master</h4>
+<span class="bg-yellow-100 text-yellow-700 dark:bg-yellow-900 dark:text-yellow-100 text-[10px] px-2 py-0.5 rounded-full font-bold uppercase tracking-wider">Newbie</span>
+</div>
+<p class="text-xs text-text-muted">4 hours ago</p>
+</div>
+</div>
+<button class="text-text-muted hover:text-text-main dark:hover:text-white">
+<span class="material-symbols-outlined">more_horiz</span>
+</button>
+</div>
+<div>
+<h3 class="text-xl font-bold text-text-main dark:text-white mb-2 leading-tight">How to center a div (for real this time) 🎯</h3>
+<p class="text-text-main/80 dark:text-[#d0c6bf] text-sm leading-relaxed mb-3">
+                                Forget absolute positioning with transform. Grid is the way to go in 2024. Just three lines of CSS!
+                            </p>
+<div class="bg-gradient-to-r from-blue-500 to-cyan-500 rounded-lg p-6 flex items-center justify-center mb-2 min-h-[160px]" data-alt="Abstract gradient showing a centered box">
+<div class="bg-white/20 backdrop-blur-md border border-white/30 text-white font-mono p-4 rounded shadow-lg">
+                                    place-items: center;
+                                </div>
+</div>
+</div>
+<div class="flex flex-wrap gap-2">
+<span class="px-2.5 py-1 rounded-lg bg-primary/10 text-primary text-xs font-semibold hover:bg-primary/20 cursor-pointer transition-colors">#css</span>
+<span class="px-2.5 py-1 rounded-lg bg-primary/10 text-primary text-xs font-semibold hover:bg-primary/20 cursor-pointer transition-colors">#grid</span>
+<span class="px-2.5 py-1 rounded-lg bg-primary/10 text-primary text-xs font-semibold hover:bg-primary/20 cursor-pointer transition-colors">#webdesign</span>
+</div>
+<div class="h-px w-full bg-[#f4ece6] dark:bg-[#3e2f26]"></div>
+<div class="flex items-center gap-6">
+<button class="flex items-center gap-2 group">
+<span class="material-symbols-outlined text-text-muted group-hover:text-red-500 transition-colors">favorite_border</span>
+<span class="text-sm font-bold text-text-muted group-hover:text-red-500 transition-colors">856</span>
+</button>
+<button class="flex items-center gap-2 group">
+<span class="material-symbols-outlined text-text-muted group-hover:text-primary transition-colors">chat_bubble</span>
+<span class="text-sm font-bold text-text-muted group-hover:text-primary transition-colors">42</span>
+</button>
+<button class="flex items-center gap-2 group ml-auto">
+<span class="material-symbols-outlined text-text-muted group-hover:text-text-main dark:group-hover:text-white transition-colors">share</span>
+</button>
+</div>
+</div>
+</article>
+<!-- Card 3: Python -->
+<article class="bg-surface-light dark:bg-surface-dark rounded-xl shadow-soft overflow-hidden hover:shadow-md transition-shadow duration-300">
+<div class="p-5 flex flex-col gap-4">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-3">
+<div class="size-10 rounded-full bg-cover bg-center" data-alt="Avatar of Python Fan" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuA3FXpQRtvVrRk7bNHJYhNA06Q315gY3BBduiEqSLKHmtGgo2f0E9mQQXEWs-mjKLyxEhhhdkYLe0wYDosw5RnoPGBa5arkVU7ybgckc1-uxtpdJ9UBTR1Vd-3FUGGtpmgfl03vBvYHkbOExCTbYmgJ03PbBnhMUoH7LkxPokJztm2DwSnf4NU1qmqTB_GLfvKziFr17NPCzMVOuXv3NMIggHnzI3DNNBJwdqGdGxkHSqmhGQPM1U_KsdqAZ_SMYQrb6CELToUGjy8");'></div>
+<div>
+<div class="flex items-center gap-2">
+<h4 class="font-bold text-text-main dark:text-white text-sm">@py_newbie</h4>
+<span class="bg-blue-100 text-blue-700 dark:bg-blue-900 dark:text-blue-100 text-[10px] px-2 py-0.5 rounded-full font-bold uppercase tracking-wider">Learner</span>
+</div>
+<p class="text-xs text-text-muted">Yesterday</p>
+</div>
+</div>
+<button class="text-text-muted hover:text-text-main dark:hover:text-white">
+<span class="material-symbols-outlined">more_horiz</span>
+</button>
+</div>
+<div>
+<h3 class="text-xl font-bold text-text-main dark:text-white mb-2 leading-tight">My first Python script running! 🐍</h3>
+<p class="text-text-main/80 dark:text-[#d0c6bf] text-sm leading-relaxed mb-3">
+                                Automated my file organization. It feels like magic when the computer does the work for you.
+                            </p>
+</div>
+<div class="flex flex-wrap gap-2">
+<span class="px-2.5 py-1 rounded-lg bg-primary/10 text-primary text-xs font-semibold hover:bg-primary/20 cursor-pointer transition-colors">#python</span>
+<span class="px-2.5 py-1 rounded-lg bg-primary/10 text-primary text-xs font-semibold hover:bg-primary/20 cursor-pointer transition-colors">#automation</span>
+</div>
+<div class="h-px w-full bg-[#f4ece6] dark:bg-[#3e2f26]"></div>
+<div class="flex items-center gap-6">
+<button class="flex items-center gap-2 group">
+<span class="material-symbols-outlined text-text-muted group-hover:text-red-500 transition-colors">favorite_border</span>
+<span class="text-sm font-bold text-text-muted group-hover:text-red-500 transition-colors">45</span>
+</button>
+<button class="flex items-center gap-2 group">
+<span class="material-symbols-outlined text-text-muted group-hover:text-primary transition-colors">chat_bubble</span>
+<span class="text-sm font-bold text-text-muted group-hover:text-primary transition-colors">12</span>
+</button>
+<button class="flex items-center gap-2 group ml-auto">
+<span class="material-symbols-outlined text-text-muted group-hover:text-text-main dark:group-hover:text-white transition-colors">share</span>
+</button>
+</div>
+</div>
+</article>
+</main>
+<!-- Right Sidebar Widgets -->
+<aside class="hidden xl:block xl:col-span-3 space-y-6">
+<!-- Daily Encouragement -->
+<div class="bg-gradient-to-br from-primary/20 to-orange-100 dark:from-primary/10 dark:to-[#2d241e] rounded-xl p-5 border border-primary/10">
+<div class="flex items-start gap-3 mb-2">
+<span class="material-symbols-outlined text-primary">lightbulb</span>
+<h3 class="font-bold text-text-main dark:text-white text-sm pt-0.5">Daily Vibe</h3>
+</div>
+<p class="text-sm italic text-text-main/80 dark:text-[#d0c6bf]">
+                        "Every expert was once a beginner. Don't be afraid to break things today!"
+                    </p>
+</div>
+<!-- Top Learners -->
+<div class="bg-surface-light dark:bg-surface-dark rounded-xl shadow-soft p-5">
+<div class="flex items-center justify-between mb-4">
+<h3 class="font-bold text-text-main dark:text-white">Weekly Top Learners</h3>
+<a class="text-xs font-bold text-primary hover:underline" href="#">View All</a>
+</div>
+<div class="flex flex-col gap-4">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-3">
+<div class="size-9 rounded-full bg-cover bg-center" data-alt="Avatar of user 1" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuD8Ug73GdI4dl7zCZFECNMexa4Zo75QQXOGtgrebf2JAFQa8bATIVdcKNaasIlQJHioNLxRZRHNQlNYF_4KRI8ejdZy8mbSA1wwMfv5BS_iBE7ZB9IsqZGCvEdvyG4WfS1nVtZkuh-oErdF25I_MMYL0mopIWp89gxoPTlSonjLws5szRhKhUEbnOLFAUIehcoM2dE4HR3XMrQazbbmoadzvbppvPOtqTC-q81NrgN2f5zm2lwFNTb5Nu_-nXL4A_Z10cD-inmKMaU");'></div>
+<div class="flex flex-col">
+<span class="text-sm font-bold text-text-main dark:text-white">jason_dev</span>
+<span class="text-xs text-text-muted">540 pts</span>
+</div>
+</div>
+<span class="text-lg">🥇</span>
+</div>
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-3">
+<div class="size-9 rounded-full bg-cover bg-center" data-alt="Avatar of user 2" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuAf3pzqIBSsGS795cGnyxQHIEF1vECB_fc1A6k8CHfrsAnWp728CR_J8kKTjbywMWr4xyrhLDOVgzQana6-E2uRLPqNVdkqJBYeX_1W0KH9rACA8BqiAq9QqeROAeBCCcNInYrjOF0aGje7n6nLuDa3Lo6LpTxcNsYCUdK4YobFkxmoTGSGU0IdOmRwb1a4h89fF33iWHZFaaM6EB27SSzpElAaQ3X9ZkBQpjkslrcsfZKN_jOT7773JMIoXFs7bpd2JT-K5PFZNA4");'></div>
+<div class="flex flex-col">
+<span class="text-sm font-bold text-text-main dark:text-white">sarah_codes</span>
+<span class="text-xs text-text-muted">480 pts</span>
+</div>
+</div>
+<span class="text-lg">🥈</span>
+</div>
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-3">
+<div class="size-9 rounded-full bg-cover bg-center" data-alt="Avatar of user 3" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuCrw2q_Q5GPtZtjuhS2pzV0fdnH8eQGDNtxkUcV8jPesm1FUlsy6nT33owcBNxL6xtbsR3arx5bXVe77txIdgKNzUKEICMjvgwNr13tUdpPo6nk1FXl9mo8Y3DjdPWRfpLxxVEVkaWlXNlGqQlTL3gPd87piXmg3jw28tMrUXcbjZqN7pvf5rm9ckHpn66prv1oYUdXG-Ve0x64-xx9LWxT26GCX-BWkaqws32ybkofvQqgiaBFl6izMkwLXcPqYFgzNTkq5jRl6Eo");'></div>
+<div class="flex flex-col">
+<span class="text-sm font-bold text-text-main dark:text-white">mike_ts</span>
+<span class="text-xs text-text-muted">410 pts</span>
+</div>
+</div>
+<span class="text-lg">🥉</span>
+</div>
+</div>
+</div>
+<!-- Trending Tags -->
+<div class="bg-surface-light dark:bg-surface-dark rounded-xl shadow-soft p-5">
+<h3 class="font-bold text-text-main dark:text-white mb-4">Trending Tags</h3>
+<div class="flex flex-wrap gap-2">
+<span class="px-3 py-1.5 rounded-lg bg-[#f4ece6] dark:bg-[#3e2f26] text-text-main dark:text-white text-xs font-medium hover:bg-primary/20 transition-colors cursor-pointer">#javascript</span>
+<span class="px-3 py-1.5 rounded-lg bg-[#f4ece6] dark:bg-[#3e2f26] text-text-main dark:text-white text-xs font-medium hover:bg-primary/20 transition-colors cursor-pointer">#webdev</span>
+<span class="px-3 py-1.5 rounded-lg bg-[#f4ece6] dark:bg-[#3e2f26] text-text-main dark:text-white text-xs font-medium hover:bg-primary/20 transition-colors cursor-pointer">#beginners</span>
+<span class="px-3 py-1.5 rounded-lg bg-[#f4ece6] dark:bg-[#3e2f26] text-text-main dark:text-white text-xs font-medium hover:bg-primary/20 transition-colors cursor-pointer">#rust</span>
+<span class="px-3 py-1.5 rounded-lg bg-[#f4ece6] dark:bg-[#3e2f26] text-text-main dark:text-white text-xs font-medium hover:bg-primary/20 transition-colors cursor-pointer">#css-tricks</span>
+<span class="px-3 py-1.5 rounded-lg bg-[#f4ece6] dark:bg-[#3e2f26] text-text-main dark:text-white text-xs font-medium hover:bg-primary/20 transition-colors cursor-pointer">#career</span>
+</div>
+</div>
+<!-- Footer Links -->
+<div class="px-2">
+<p class="text-xs text-text-muted leading-relaxed">
+                        Privacy Policy • Terms of Service • Vibelabs © 2024
+                    </p>
+</div>
+</aside>
+</div>
+</div>
+</body></html>
