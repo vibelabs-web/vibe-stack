@@ -8,6 +8,7 @@ if [ ! -d "venv" ]; then
     source venv/bin/activate
     echo "의존성을 설치합니다..."
     pip install -r requirements.txt
+    pip install pydantic[email]
 else
     source venv/bin/activate
 fi
