@@ -25,8 +25,16 @@ if not exist "venv" (
     echo 의존성을 설치합니다...
     pip install pydantic[email]
     pip install -r requirements.txt
+    echo 데이터베이스를 초기화합니다...
+    python -c "from app.database import engine, Base; from app.models import user, post; Base.metadata.create_all(bind=engine)"
 ) else (
     call venv\Scripts\activate
+)
+
+REM DB 파일이 없으면 테이블 생성
+if not exist "sql_app.db" (
+    echo 데이터베이스를 초기화합니다...
+    python -c "from app.database import engine, Base; from app.models import user, post; Base.metadata.create_all(bind=engine)"
 )
 
 uvicorn app.main:app --reload --port 8000
